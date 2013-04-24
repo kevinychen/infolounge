@@ -13,25 +13,18 @@ function handlePredictions(data) {
     }
 
     for (var i = 0; i < 2; i++) {
-        var elem = $('<li><div class="route"></div><div class="time"></div><div class="run"></div></li>');
         prediction = predictions[i];
-
-        $(elem).find('.route').text(routeNames[prediction.route_id]);
-
-        $(elem).find('.run').text(runNames[prediction.run_id]);
+        $("#predictions").append('<li><div>');
 
         var minutes = prediction.minutes;
-        var timeCaption;
         if (minutes == 0) {
-            timeCaption = prediction.is_departing ? "Departing" : "Arriving";
+            $("#predictions").append(prediction.is_departing ? "Departing" : "Arriving");
         }
         else {
-            timeCaption = minutes+" min";
+            $("#predictions").append(minutes + " min");
         }
 
-        $(elem).find('.time').text(timeCaption);
-
-        $("#predictions").append(elem);
+        $("#predictions").append('</div><div style="font-size:24px">to Tang/Westgate</div></li>');
     }
 }
 
