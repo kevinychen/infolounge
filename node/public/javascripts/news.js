@@ -5,7 +5,7 @@ var newsFile = 'public/news.dat';
 
 function getNews() {
     console.log(process.cwd());
-    if (fs.exists(newsFile)) {
+    if (fs.existsSync(newsFile)) {
         data = fs.readFileSync(newsFile, 'utf8').split('\n');
         code = dateformat.dateFormat('m/dd');
         for (var i = 0; i < data.length; i += 2) {
