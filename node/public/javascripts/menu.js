@@ -34,9 +34,9 @@ function getMenu(callback) {
                 var grill = body.substring(grillIndex + 1).match(/<strong>[^<>]*<\/strong>/g)[0];
                 var stirfry = body.substring(stirfryIndex + 1).match(/<strong>[^<>]*<\/strong>/g)[0];
 
-                menu += '<li>Comforts: ' + comforts + '</li>';
-                menu += '<li>Grill: ' + grill + '</li>';
-                menu += '<li>Stir Fry: ' + stirfry + '</li>';
+                menu += '<li><span class="menu_item">Comforts:</span> ' + comforts + '</li>';
+                menu += '<li><span class="menu_item">Grill:</span> ' + grill + '</li>';
+                menu += '<li><span class="menu_item">Stir Fry:</span> ' + stirfry + '</li>';
                 callback(menu);
             }
     })
