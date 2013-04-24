@@ -1,12 +1,17 @@
+var fs = require('fs');
 var dateformat = require('./dateformat.js');
-var newsdata = require('./newsdata.js');
-data = newsdata.news
+
+var newsFile = 'public/news.dat';
 
 function getNews() {
-    code = dateformat.dateFormat('m/dd');
-    for (var i = 0; i < data.length; i += 2) {
-        if (code == data[i]) {
-            return data[i + 1];
+    console.log(process.cwd());
+    if (fs.exists(newsFile)) {
+        data = fs.readFileSync(newsFile, 'utf8').split('\n');
+        code = dateformat.dateFormat('m/dd');
+        for (var i = 0; i < data.length; i += 2) {
+            if (code == data[i]) {
+                return data[i + 1];
+            }
         }
     }
     return 'No news today. :(';
