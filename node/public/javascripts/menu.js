@@ -6,7 +6,7 @@ function getMenu(callback) {
     request('http://www.cafebonappetit.com/menu/your-cafe/mit/cafes/details/401/next', function(error, response, body) {
             if (!error && response.statusCode == 200) {
                 now = new Date();
-                var menu = '<li><span style="font-size:44px">Today for dinner:</span></li>';
+                var menu = '<li><span style="font-size:44px">Today for dinner:</span></li><br/>';
 
                 var time = now.getHours() + ":" + now.getMinutes();
                 if (time > "20:30" || time < "12:00") {

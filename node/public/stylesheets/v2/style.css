@@ -57,36 +57,37 @@ h3{
 	margin-right: 20px;
 	padding: 20px;
 	display: none;
-    border-width: 20px;
     box-shadow: 10px 10px 5px #AAAAAA;
 }
 
 #panel1{
-	background-color: #78D6F0;
+	background-color: #F9D654;
 	float: left;
-	overflow: hidden;
 	max-height: 100%;
 }
 
 #panel2{
-	background-color: #FF96C2;
+    background-color: #56BAEC;
 	float: left;
+    margin-bottom: 25px;
 }
 
 #panel3{
-	background-color: #78F090;
+	background-color: #9CCF31;
 	float: left;
 	margin: 0;
+    margin-bottom: 25px;
 }
 
 #panel4{
-    background-color: #FF6600;
+    background-color: #FF9E00;
     float: left;
     margin: 0;
+    margin-bottom: 25px;
 }
 
 #panel5{
-    background-color: #003399;
+    background-color: #336699;
     float: left;
     margin: 0;
 }
@@ -99,7 +100,7 @@ ul.tweet_list li{
 	clear: both;
 	min-height: 40px;
 	font-size: 1.1em;
-	border-bottom: solid 1px #9CE9FF;
+	border-bottom: solid 1px #CC3366;
 	padding-bottom: 20px;
 }
 ul.tweet_list li a{
