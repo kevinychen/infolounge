@@ -57,6 +57,8 @@ h3{
 	margin-right: 20px;
 	padding: 20px;
 	display: none;
+    border-width: 20px;
+    box-shadow: 10px 10px 5px #AAAAAA;
 }
 
 #panel1{
@@ -75,6 +77,12 @@ h3{
 	background-color: #78F090;
 	float: left;
 	margin: 0;
+}
+
+#panel4{
+    background-color: #FF6600;
+    float: left;
+    margin: 0;
 }
 
 ul.tweet_list{
@@ -109,4 +117,8 @@ ul.tweet_list li a{
     padding: 20px;
     text-align: center;
     vertical-align: middle;
+}
+
+#menu{
+    font-size: 32px;
 }

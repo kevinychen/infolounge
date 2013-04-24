@@ -33,6 +33,7 @@
       $("#panel1").delay(500).slideDown("slow");
       $("#panel2").delay(600).slideDown("slow");
       $("#panel3").delay(900).slideDown("slow");
+      $("#panel4").delay(1200).slideDown("slow");
 
     });
 </script>
@@ -75,6 +76,14 @@
         </ul>
         </div>
       </div>
+      <% if (typeof menu != 'undefined') { %>
+      <div id='panel4' class='panel'>
+          <div class='module'>
+              <h3>Menu</h3>
+              <ul id="menu"><%- menu %></ul>
+          </div>
+      </div>
+      <% } %>
     </div>
   </body>
 </html>

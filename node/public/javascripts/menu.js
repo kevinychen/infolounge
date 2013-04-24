@@ -1,169 +1,46 @@
-/*
- * Date Format 1.2.3
- * (c) 2007-2009 Steven Levithan <stevenlevithan.com>
- * MIT license
- *
- * Includes enhancements by Scott Trenda <scott.trenda.net>
- * and Kris Kowal <cixar.com/~kris.kowal/>
- *
- * Accepts a date, a mask, or a date and a mask.
- * Returns a formatted version of the given date.
- * The date defaults to the current date/time.
- * The mask defaults to dateFormat.masks.default.
- */
 
-var dateFormat = function () {
-	var	token = /d{1,4}|m{1,4}|yy(?:yy)?|([HhMsTt])\1?|[LloSZ]|"[^"]*"|'[^']*'/g,
-		timezone = /\b(?:[PMCEA][SDP]T|(?:Pacific|Mountain|Central|Eastern|Atlantic) (?:Standard|Daylight|Prevailing) Time|(?:GMT|UTC)(?:[-+]\d{4})?)\b/g,
-		timezoneClip = /[^-+\dA-Z]/g,
-		pad = function (val, len) {
-			val = String(val);
-			len = len || 2;
-			while (val.length < len) val = "0" + val;
-			return val;
-		};
+var dateformat = require('./dateformat.js');
+var request = require('request');
 
-	// Regexes and supporting functions are cached through closure
-	return function (date, mask, utc) {
-		var dF = dateFormat;
+function getMenu(callback) {
+    request('http://www.cafebonappetit.com/menu/your-cafe/mit/cafes/details/401/next', function(error, response, body) {
+            if (!error && response.statusCode == 200) {
+                now = new Date();
+                var menu = '<li><span style="font-size:44px">Today for dinner:</span></li>';
 
-		// You can't provide utc if you skip other args (use the "UTC:" mask prefix)
-		if (arguments.length == 1 && Object.prototype.toString.call(date) == "[object String]" && !/\d/.test(date)) {
-			mask = date;
-			date = undefined;
-		}
+                var time = now.getHours() + ":" + now.getMinutes();
+                if (time > "20:30" || time < "12:00") {
+                    callback(undefined);
+                    return;
+                }
 
-		// Passing date through Date applies Date.parse, if necessary
-		date = date ? new Date(date) : new Date;
-		if (isNaN(date)) throw SyntaxError("invalid date");
+                var date = dateformat.dateFormat(now, 'dddd, mmmm dS, yyyy');
+                var dateIndex = body.indexOf(date);
+                if (dateIndex == -1) {
+                    callback(undefined);
+                    return;
+                }
+                var dinnerIndex = body.indexOf('Dinner', dateIndex);
+                if (dinnerIndex == -1) {
+                    callback(undefined);
+                    return;
+                }
 
-		mask = String(dF.masks[mask] || mask || dF.masks["default"]);
+                var comfortsIndex = body.indexOf('<strong>comforts</strong>', dinnerIndex);
+                var grillIndex = body.indexOf('<strong>smokehouse grill</strong>', dinnerIndex);
+                var stirfryIndex = body.indexOf('<strong>action</strong>', dinnerIndex);
 
-		// Allow setting the utc argument via the mask
-		if (mask.slice(0, 4) == "UTC:") {
-			mask = mask.slice(4);
-			utc = true;
-		}
+                var comforts = body.substring(comfortsIndex + 1).match(/<strong>[^<>]*<\/strong>/g)[0];
+                var grill = body.substring(grillIndex + 1).match(/<strong>[^<>]*<\/strong>/g)[0];
+                var stirfry = body.substring(stirfryIndex + 1).match(/<strong>[^<>]*<\/strong>/g)[0];
 
-		var	_ = utc ? "getUTC" : "get",
-			d = date[_ + "Date"](),
-			D = date[_ + "Day"](),
-			m = date[_ + "Month"](),
-			y = date[_ + "FullYear"](),
-			H = date[_ + "Hours"](),
-			M = date[_ + "Minutes"](),
-			s = date[_ + "Seconds"](),
-			L = date[_ + "Milliseconds"](),
-			o = utc ? 0 : date.getTimezoneOffset(),
-			flags = {
-				d:    d,
-				dd:   pad(d),
-				ddd:  dF.i18n.dayNames[D],
-				dddd: dF.i18n.dayNames[D + 7],
-				m:    m + 1,
-				mm:   pad(m + 1),
-				mmm:  dF.i18n.monthNames[m],
-				mmmm: dF.i18n.monthNames[m + 12],
-				yy:   String(y).slice(2),
-				yyyy: y,
-				h:    H % 12 || 12,
-				hh:   pad(H % 12 || 12),
-				H:    H,
-				HH:   pad(H),
-				M:    M,
-				MM:   pad(M),
-				s:    s,
-				ss:   pad(s),
-				l:    pad(L, 3),
-				L:    pad(L > 99 ? Math.round(L / 10) : L),
-				t:    H < 12 ? "a"  : "p",
-				tt:   H < 12 ? "am" : "pm",
-				T:    H < 12 ? "A"  : "P",
-				TT:   H < 12 ? "AM" : "PM",
-				Z:    utc ? "UTC" : (String(date).match(timezone) || [""]).pop().replace(timezoneClip, ""),
-				o:    (o > 0 ? "-" : "+") + pad(Math.floor(Math.abs(o) / 60) * 100 + Math.abs(o) % 60, 4),
-				S:    ["th", "st", "nd", "rd"][d % 10 > 3 ? 0 : (d % 100 - d % 10 != 10) * d % 10]
-			};
+                menu += '<li>Comforts: ' + comforts + '</li>';
+                menu += '<li>Grill: ' + grill + '</li>';
+                menu += '<li>Stir Fry: ' + stirfry + '</li>';
+                callback(menu);
+            }
+    })
+}
 
-		return mask.replace(token, function ($0) {
-			return $0 in flags ? flags[$0] : $0.slice(1, $0.length - 1);
-		});
-	};
-}();
-
-// Some common format strings
-dateFormat.masks = {
-	"default":      "ddd mmm dd yyyy HH:MM:ss",
-	shortDate:      "m/d/yy",
-	mediumDate:     "mmm d, yyyy",
-	longDate:       "mmmm d, yyyy",
-	fullDate:       "dddd, mmmm d, yyyy",
-	shortTime:      "h:MM TT",
-	mediumTime:     "h:MM:ss TT",
-	longTime:       "h:MM:ss TT Z",
-	isoDate:        "yyyy-mm-dd",
-	isoTime:        "HH:MM:ss",
-	isoDateTime:    "yyyy-mm-dd'T'HH:MM:ss",
-	isoUtcDateTime: "UTC:yyyy-mm-dd'T'HH:MM:ss'Z'"
-};
-
-// Internationalization strings
-dateFormat.i18n = {
-	dayNames: [
-		"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat",
-		"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
-	],
-	monthNames: [
-		"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
-		"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
-	]
-};
-
-// For convenience...
-Date.prototype.format = function (mask, utc) {
-	return dateFormat(this, mask, utc);
-};
-
-
-// MY CODE
-
-var request = require('request')
-
-request('http://www.cafebonappetit.com/menu/your-cafe/mit/cafes/details/401/next', function(error, response, body) {
-    if (!error && response.statusCode == 200) {
-        now = new Date();
-        $("menu").html('');
-
-        if (now.getHours() + ":" + now.getMinutes() > "20:30") {
-            $("menu").append('Tomorrow Becky is eating:');
-            now.setDate(now.getDate() + 1);
-        } else {
-            $("menu").append('Today Becky is eating:');
-        }
-
-        var date = dateFormat(now, 'dddd, mmmm dS, yyyy');
-        var dateIndex = body.indexOf(date);
-        if (dateIndex == -1) {
-            return;
-        }
-        var dinnerIndex = body.indexOf('Dinner', dateIndex);
-        if (dinnerIndex == -1) {
-            return;
-        }
-
-        var comfortsIndex = body.indexOf('<strong>comforts</strong>', dinnerIndex);
-        var grillIndex = body.indexOf('<strong>smokehouse grill</strong>', dinnerIndex);
-        var stirfryIndex = body.indexOf('<strong>action</strong>', dinnerIndex);
-
-        var comforts = body.substring(comfortsIndex + 1).match(/<strong>[^<>]*<\/strong>/g)[0];
-        var grill = body.substring(grillIndex + 1).match(/<strong>[^<>]*<\/strong>/g)[0];
-        var stirfry = body.substring(stirfryIndex + 1).match(/<strong>[^<>]*<\/strong>/g)[0];
-
-        $("menu").append('<ul>');
-        $("menu").append('<li>Comforts: ' + comforts + '</li>');
-        $("menu").append('<li>Grill: ' + grill + '</li>');
-        $("menu").append('<li>Stir Fry: ' + stirfry + '</li>');
-        $("menu").append('</ul>');
-    }
-})
+exports.getMenu = getMenu;
 
