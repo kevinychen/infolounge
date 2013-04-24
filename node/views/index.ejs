@@ -12,6 +12,7 @@
     <!-- JAVASCRIPT -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="http://tweet.seaofclouds.com/jquery.tweet.js" charset="utf-8"></script>
+    <script src="/javascripts/dateformat.js"></script>
   	
 <script type='text/javascript'>
     $(document).ready(function(){
@@ -34,15 +35,21 @@
 </script>
 
   </head>
-  <body>
+  <body onload='getTime()'>
   	<div id='content'>
       <div id='header'>
         <h1>infolounge</h1>
         <h2>beta v2.1</h2>
 
         <div id='clock'>
-          11:30 <span class='ampm'>PM</span>
         </div>
+        <script>
+            function getTime() {
+                window.setInterval(function() {
+                    document.getElementById('clock').innerHTML=dateFormat('ddd, mmm d "&nbsp;" h:MM "<span class=\'ampm\'>"TT"</span>"');
+                }, 1000);
+            };
+        </script>
       </div>
 
       <div id='panel1' class='panel'>
