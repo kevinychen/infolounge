@@ -7,22 +7,18 @@ $(function() {
 				unit: 'f',
 
 				success: function(weather) {
-					html1 = '<span style="float:left;padding-left:4%; margin-top:52px; font-size:24px;">Now</span><img style="position:fixed;float:left;left:11%;" width="135px" src="images/weather/'+weather.code+'.png">';
-					html1 += '<p><span style="font-size:16px;color:#4C4C4C;"></span><br/><span style="font-size:53.2px;color:#ffffff;"><b>'+weather.temp+'&deg;'+weather.units.temp+'</b></span><span style="font-size:39px;color:#ffffff;"> | Feel '+weather.wind.chill+'&deg;'+weather.units.temp+'<br /></span><b><span style="font-size:34px;color:#ffffff;">'+weather.tempAlt+'&degC </span></b>| Feel	 '+((weather.wind.chill - 32)*(5/9)).toFixed(0)+'&deg;C<br /><span>'+weather.currently+'</span></p><br/><br/><br/>';
+                    html = '<table><tr>';
+					html += '<td><img width="135px" src="images/weather/'+weather.code+'.png"></td>';
+                    html += '<td><span style="font-size:48px;">Now</span><br/><br/>temp / feel<br/><span style="font-size:60px;">'+weather.temp+'&deg;'+weather.units.temp+' | ' + weather.wind.chill + '&deg;' + weather.units.temp + '</span><br/><br/><span style="font-size:36px;">' + weather.currently + '</span></td></tr>';
 
-					html2 = '<span style="float:left;padding-left:3%; margin-top:35px; font-size:24px;">Today</span><img style="position:fixed;float:left;left:11%;" width="110px" src="images/weather/'+weather.todayCode+'.png">'	;
-					html2 += '<p><span style="font-size:16px;color:#4C4C4C;"></span><br/><span style="font-size:34px;color:#ffffff;">'+weather.high+'&deg;'+weather.units.temp+' | '+weather.low+'&deg;'+weather.units.temp+'</span><br />'+((weather.high - 32)*(5/9)).toFixed(0)+'&deg;C | '+((weather.low - 32)*(5/9)).toFixed(0)+'&deg;C<br /><span>'+weather.forecast+'</span></p><br/><br/><br/>';
+                    html += '<tr><td><img width="135" src="images/weather/' + weather.todayCode + '.png">';
+                    html += '<td><span style="font-size:36px;">Today</span><br/><br/><span style="font-size:48px;">' + weather.high + '&deg;' + weather.units.temp + ' | ' + weather.low + '&deg;' + weather.units.temp + '</span><br/><br/><span style="font-size:32px;">' + weather.forecast + '</span></td>';
+                    html += '</tr></table>';
 
-					html3 = '<span style="float:left;padding-left:3%; margin-top:40px;	font-size:24px;">'+weather.tomorrow.day+'</span><img style="position:fixed;float:left;left:11%;" width="110px" src="images/weather/'+weather.tomorrow.code+'.png">'	;	
-					html3 += '<p><span style="font-size:16px;color:#4C4C4C;"></span><br/><span style="font-size:34px;color:#ffffff;">'+weather.tomorrow.high+'&deg;'+weather.units.temp+' | '+weather.tomorrow.low+'&deg;'+weather.units.temp+'</span><br />'+((weather.tomorrow.high - 32)*(5/9)).toFixed(0)+'&deg;C | '+((weather.tomorrow.low - 32)*(5/9)).toFixed(0)+'&deg;C<br /><span>'+weather.tomorrow.forecast+'</span></p>';
-					html4 = weather.tomorrow.day+' '+weather.tomorrow.date
-					$("#weather1").html(html1);
-					$("#weather2").html(html2);
-					$("#weather3").html(html3);
-					$("#weather4").html(html4);
+					$("#weather").html(html);
 				},
 				error: function(error) {
-					$("#weather1").html('<p>'+error+'</p>');
+					$("#weather").html('<p>'+error+'</p>');
 				}
 			});
 		});

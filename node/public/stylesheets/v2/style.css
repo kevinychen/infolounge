@@ -100,3 +100,13 @@ ul.tweet_list li a{
 .tweet_time{
 	display: none;
 }
+
+#predictions{
+    font-size: 60px;
+}
+
+#weather td,th{
+    padding: 20px;
+    text-align: center;
+    vertical-align: middle;
+}
