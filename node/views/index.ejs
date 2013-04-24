@@ -34,6 +34,7 @@
       $("#panel2").delay(600).slideDown("slow");
       $("#panel3").delay(900).slideDown("slow");
       $("#panel4").delay(1200).slideDown("slow");
+      $("#panel5").delay(1500).slideDown("slow");
 
     });
 </script>
@@ -84,6 +85,12 @@
           </div>
       </div>
       <% } %>
+      <div id='panel5' class='panel'>
+          <div class='module'>
+              <h3>News (mainly so I have a place to write whatever I want)</h3>
+              <ul id="news"><%- news %></ul>
+          </div>
+      </div>
     </div>
   </body>
 </html>

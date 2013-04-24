@@ -85,6 +85,12 @@ h3{
     margin: 0;
 }
 
+#panel5{
+    background-color: #003399;
+    float: left;
+    margin: 0;
+}
+
 ul.tweet_list{
 
 }
@@ -122,3 +128,8 @@ ul.tweet_list li a{
 #menu{
     font-size: 32px;
 }
+
+#news{
+    font-size: 28px;
+}
+
