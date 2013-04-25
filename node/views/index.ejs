@@ -14,10 +14,13 @@
     <script src="http://tweet.seaofclouds.com/jquery.tweet.js" charset="utf-8"></script>
     <script type="text/javascript" src="/javascripts/jquery.simpleWeather.js" charset="utf-8"></script>
     <script src="/javascripts/dateformat.js"></script>
-    <script src="/javascripts/tech.js"></script>
     <script src="/javascripts/weather.js"></script>
+    <script src="/javascripts/tech.js"></script>
+    <script src="/javascripts/menu.js"></script>
+    <script src="/javascripts/news.js"></script>
   	
 <script type='text/javascript'>
+    lastUpdated = -1;
     $(document).ready(function(){
 
       $(function($){
@@ -30,58 +33,56 @@
         });
       });
 
-      $("#panel1").delay(500).slideDown("slow");
-      $("#panel2").delay(600).slideDown("slow");
-      $("#panel3").delay(900).slideDown("slow");
-      $("#panel4").delay(1200).slideDown("slow");
-      $("#panel5").delay(1500).slideDown("slow");
+      // Update the time
+      window.setInterval(function() {
+          now = new Date();
+          document.getElementById('clock').innerHTML=dateFormat(now, 'ddd, mmm d "&nbsp;" h:MM "<span class=\'ampm\'>"TT"</span>"');
+
+          if (now.getMinutes() != lastUpdated) {
+              lastUpdated = now.getMinutes();
+
+              getWeather();
+              getPredictions();
+              getMenu();
+              getNews();
+          }
+      }, 1000);
+
+      $("#weatherbanner").delay(500).slideDown("slow");
+      $("#tweetpanel").delay(600).slideDown("slow");
 
     });
 </script>
 
-<meta http-equiv="refresh" content="720" >
-
   </head>
-  <body onload='getTime()'>
+  <body>
   	<div id='content'>
       <div id='header'>
-        <h1>infolounge</h1>
-        <h2>beta v2.1</h2>
+          <h1>infolounge</h1>
+          <h2>beta v2.1</h2>
 
-        <div id='clock'>
-        </div>
-        <script>
-            function getTime() {
-                window.setInterval(function() {
-                    document.getElementById('clock').innerHTML=dateFormat('ddd, mmm d "&nbsp;" h:MM "<span class=\'ampm\'>"TT"</span>"');
-                }, 1000);
-            };
-        </script>
+          <div id='clock'></div>
       </div>
 
-      <div id='panel2' class='banner'>
+      <div id='weatherbanner' class='banner'>
           <div id="weather"></div>
       </div>
 
-      <div id='panel1' class='panel'>
+      <div id='tweetpanel' class='panel'>
           <h3>Twitter</h3>
-          <div id='tweet_feed'>
-          </div>
+          <div id='tweet_feed'></div>
       </div>
-      <div id='panel3' class='panel'>
-        <h3>Tech Shuttle</h3>
-        <ul id="predictions">
-        </ul>
+      <div id='techpanel' class='panel'>
+          <h3>Tech Shuttle</h3>
+          <ul id="predictions"></ul>
       </div>
-      <% if (typeof menu != 'undefined') { %>
-      <div id='panel4' class='panel'>
+      <div id='menupanel' class='panel'>
           <h3>Menu</h3>
-          <ul id="menu"><%- menu %></ul>
+          <ul id="menu"></ul>
       </div>
-      <% } %>
-      <div id='panel5' class='panel'>
+      <div id='newspanel' class='panel'>
           <h3>Lounge News</h3>
-          <ul id="news"><%- news %></ul>
+          <ul id="news"></ul>
       </div>
     </div>
   </body>

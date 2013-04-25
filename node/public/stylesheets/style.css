@@ -70,31 +70,31 @@ b{
 	display: none;
 }
 
-#panel1{
-	background-color: #F9D654;
+#weatherbanner{
+    background-color: #78D6F0;
+	float: left;
+    margin-bottom: 15px;
+}
+
+#tweetpanel{
+	background-color: #FF96C2;
 	float: left;
 	max-height: 100%;
 }
 
-#panel2{
-    background-color: #56BAEC;
+#techpanel{
+	background-color: #78F090;
 	float: left;
     margin-bottom: 15px;
 }
 
-#panel3{
-	background-color: #009900;
-	float: left;
-    margin-bottom: 15px;
-}
-
-#panel4{
+#menupanel{
     background-color: #FF9E00;
     float: left;
     margin-bottom: 15px;
 }
 
-#panel5{
+#newspanel{
     background-color: #336699;
     float: left;
     margin-bottom: 15px;

@@ -7,7 +7,8 @@ var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
   , http = require('http')
-  , path = require('path');
+  , path = require('path')
+  , info = require('./routes/info');
 
 var app = express();
 
@@ -30,8 +31,9 @@ app.configure('development', function(){
 });
 
 
-app.get('/legacy', routes.legacy);
 app.get('/users', user.list);
+app.get('/menu.json', info.getItems);
+app.get('/news.json', info.getNews);
 app.get('/', routes.index);
 
 app.get('/:num', routes.index);

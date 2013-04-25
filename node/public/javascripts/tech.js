@@ -6,7 +6,7 @@ function handlePredictions(data) {
     var predictions = data.items;
 
     if (predictions.length == 0) {
-        $("#predictions").html('<li>Try walking</li>');
+        $("#techpanel").slideUp("slow");
         return;
     }
 
@@ -33,10 +33,11 @@ function handlePredictions(data) {
         elem += ('</span>&nbsp;&nbsp;<span class="medium">' + route + '</span></li>');
     }
 
+    $("#techpanel").slideDown("slow");
     $("#predictions").html(elem);
 }
 
-$(document).ready(function() {
+function getPredictions() {
     $.getJSON(predictionsURL, handlePredictions);
-});
+};
 
