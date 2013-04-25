@@ -6,10 +6,10 @@ function getMenu(callback) {
     request('http://www.cafebonappetit.com/menu/your-cafe/mit/cafes/details/401/next', function(error, response, body) {
             if (!error && response.statusCode == 200) {
                 now = new Date();
-                var menu = '<li><span style="font-size:44px; line-height:150%">Today for dinner:</span></li>';
+                var menu = '';
 
                 var time = now.getHours() + ":" + now.getMinutes();
-                if (time > "20:30" || time < "12:00") {
+                if (time > "20:30" || time < "10:00") {
                     callback(undefined);
                     return;
                 }
@@ -34,9 +34,9 @@ function getMenu(callback) {
                 var grill = body.substring(grillIndex + 1).match(/<strong>[^<>]*<\/strong>/g)[0];
                 var stirfry = body.substring(stirfryIndex + 1).match(/<strong>[^<>]*<\/strong>/g)[0];
 
-                menu += '<li><span class="menu_item">Comforts:</span> ' + comforts + '</li>';
-                menu += '<li><span class="menu_item">Grill:</span> ' + grill + '</li>';
-                menu += '<li><span class="menu_item">Stir Fry:</span> ' + stirfry + '</li>';
+                menu += '<li><b>Comfort:</b> ' + comforts + '</li>';
+                menu += '<li><b>Grill:</b> ' + grill + '</li>';
+                menu += '<li><b>Stir Fry:</b> ' + stirfry + '</li>';
                 callback(menu);
             }
     })

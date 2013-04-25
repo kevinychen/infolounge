@@ -3,29 +3,37 @@ var stopId = 51; // Next House stop ID
 var predictionsURL = "http://proximobus.appspot.com/agencies/mit/stops/" + stopId + "/predictions.json";
 
 function handlePredictions(data) {
-    $("#predictions").html('');
-
     var predictions = data.items;
 
     if (predictions.length == 0) {
-        $("#predictions").html('<li><div class="none">Try walking</div></li>');
+        $("#predictions").html('<li>Try walking</li>');
         return;
     }
 
+    var elem = '';
     for (var i = 0; i < 2; i++) {
         prediction = predictions[i];
-        $("#predictions").append('<li><div>');
+        elem += '<li><span class="big_bold">';
 
         var minutes = prediction.minutes;
         if (minutes == 0) {
-            $("#predictions").append(prediction.is_departing ? "Departing" : "Arriving");
-        }
-        else {
-            $("#predictions").append(minutes + " min");
+            elem += (prediction.is_departing ? "Departing" : "Arriving");
+        } else {
+            elem += (minutes + " min");
         }
 
-        $("#predictions").append('</div><div style="font-size:24px">' + prediction.route_id + '</div></li>');
+        var route = '';
+        if (prediction.route_id == 'tech') {
+            route = 'Tech to Kendall';
+        } else if (prediction.route_id == 'safecambwest') {
+            route = 'Saferide Cambridge West';
+        } else {
+            route = prediction.route_id;
+        }
+        elem += ('</span>&nbsp;&nbsp;<span class="medium">' + route + '</span></li>');
     }
+
+    $("#predictions").html(elem);
 }
 
 $(document).ready(function() {

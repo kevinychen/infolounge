@@ -30,6 +30,10 @@ h3{
 	opacity: 0.6;
 }
 
+b{
+    font-weight: bold;
+}
+
 #content{
 	margin: 20px;
 	height: calc(100% - 40px);
@@ -52,11 +56,16 @@ h3{
 	color: #444444;
 }
 
+.banner{
+    width: -webkit-calc(100% - 50px);
+    padding: 15px;
+    display: none;
+}
+
 .panel{
-	width: calc(33% - 51px);
-	width: -webkit-calc(33% - 51px);
+	width: -webkit-calc(50% - 50px);
 	margin-right: 20px;
-	padding: 20px;
+	padding: 15px;
 	display: none;
 }
 
@@ -69,27 +78,25 @@ h3{
 #panel2{
     background-color: #56BAEC;
 	float: left;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 
 #panel3{
 	background-color: #009900;
 	float: left;
-	margin: 0;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 
 #panel4{
     background-color: #FF9E00;
     float: left;
-    margin: 0;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 
 #panel5{
     background-color: #336699;
     float: left;
-    margin: 0;
+    margin-bottom: 15px;
 }
 
 ul.tweet_list{
@@ -116,14 +123,12 @@ ul.tweet_list li a{
 	display: none;
 }
 
-#predictions{
-    font-size: 60px;
-}
-
 #weather td,th{
-    padding: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
     text-align: center;
     vertical-align: middle;
+    color: #ffffff;
 }
 
 #menu{
@@ -131,11 +136,28 @@ ul.tweet_list li a{
     line-height: 120%;
 }
 
-.menu_item{
-    font-weight: bold;
-}
-
 #news{
     font-size: 28px;
 }
 
+.big_bold{
+    font-size: 80px;
+    font-weight: bold;
+}
+
+.big{
+    font-size: 54px;
+}
+
+.medium_bold{
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.medium{
+    font-size: 32px;
+}
+
+.small{
+    font-size: 18px;
+}

@@ -59,39 +59,29 @@
         </script>
       </div>
 
+      <div id='panel2' class='banner'>
+          <div id="weather"></div>
+      </div>
+
       <div id='panel1' class='panel'>
-        <div class='module'>
           <h3>Twitter</h3>
           <div id='tweet_feed'>
           </div>
-        </div>
-      </div>
-      <div id='panel2' class='panel'>
-        <div class='module'>
-            <h3>Weather</h3>
-            <div id="weather"></div>
-        </div>
       </div>
       <div id='panel3' class='panel'>
-        <div class='module'>
-        <h3>TechShuttle</h3>
+        <h3>Tech Shuttle</h3>
         <ul id="predictions">
         </ul>
-        </div>
       </div>
       <% if (typeof menu != 'undefined') { %>
       <div id='panel4' class='panel'>
-          <div class='module'>
-              <h3>Menu</h3>
-              <ul id="menu"><%- menu %></ul>
-          </div>
+          <h3>Menu</h3>
+          <ul id="menu"><%- menu %></ul>
       </div>
       <% } %>
       <div id='panel5' class='panel'>
-          <div class='module'>
-              <h3>News (mainly so I have a place to write whatever I want)</h3>
-              <ul id="news"><%- news %></ul>
-          </div>
+          <h3>News</h3>
+          <ul id="news"><%- news %></ul>
       </div>
     </div>
   </body>
