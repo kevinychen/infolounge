@@ -24,7 +24,7 @@ function handlePredictions(data) {
             $("#predictions").append(minutes + " min");
         }
 
-        $("#predictions").append('</div><div style="font-size:24px">to Tang/Westgate</div></li>');
+        $("#predictions").append('</div><div style="font-size:24px">' + prediction.route_id + '</div></li>');
     }
 }
 
