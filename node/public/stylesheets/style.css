@@ -63,6 +63,7 @@ b{
 }
 
 .panel{
+        width: calc(50% - 50px);
 	width: -webkit-calc(50% - 50px);
 	margin-right: 20px;
 	padding: 15px;
@@ -124,8 +125,8 @@ ul.tweet_list li a{
 }
 
 #weather td,th{
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 26px;
+    padding-right: 26px;
     text-align: center;
     vertical-align: middle;
     color: #ffffff;
