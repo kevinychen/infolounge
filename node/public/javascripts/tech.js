@@ -25,7 +25,7 @@ function handlePredictions(data) {
         var route = '';
         if (prediction.route_id == 'tech') {
             route = 'Tech to Kendall';
-        } else if (prediction.route_id == 'safecambwest') {
+        } else if (prediction.route_id == 'saferidecambwest') {
             route = 'Saferide Cambridge West';
         } else {
             route = prediction.route_id;

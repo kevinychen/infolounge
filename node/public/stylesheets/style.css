@@ -71,31 +71,31 @@ b{
 }
 
 #weatherbanner{
-    background-color: #78D6F0;
+    background-color: #88D1ED;
 	float: left;
     margin-bottom: 15px;
 }
 
 #tweetpanel{
-	background-color: #FF96C2;
+	background-color: #F5F370;
 	float: left;
 	max-height: 100%;
 }
 
 #techpanel{
-	background-color: #78F090;
+	background-color: #B5E983;
 	float: left;
     margin-bottom: 15px;
 }
 
 #menupanel{
-    background-color: #FF9E00;
+    background-color: #FDC46D;
     float: left;
     margin-bottom: 15px;
 }
 
 #newspanel{
-    background-color: #336699;
+    background-color: #C19ADB;
     float: left;
     margin-bottom: 15px;
 }
