@@ -11,7 +11,7 @@ function getMenu() {
 
         var elem = '';
         for (var type in data) {
-            elem += ('<li><b>' + type + ':</b> ' + data[type] + '</li>');
+            elem += ('<li><span class="foodtype">' + type + ':</span> ' + data[type] + '</li>');
         }
         $("#menu").html(elem);
     });

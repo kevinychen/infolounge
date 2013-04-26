@@ -22,7 +22,8 @@ h1{
 h2{
 	font-family: Roboto, arial;
 	font-size: 20px;
-	color: #000000;
+	color: #ffffff;
+	opacity: 0.3;
 }
 h3{
 	color: #ffffff;
@@ -57,7 +58,8 @@ b{
 }
 
 .ampm {
-	color: #000000;
+	opacity: 0.3;
+	color: #ffffff;
 }
 
 .banner{
@@ -67,16 +69,25 @@ b{
 }
 
 .panel{
-	display: none;
 	color: #ffffff;
 	background-color: rgba(0,0,0,0.3);
-    padding: 15px;
 	margin-bottom: 20px;
+	padding: 15px;
+}
+.panel-content{
+	padding: 12px;
+}
+.module{
 }
 
 .twitter-header{
 	background-color: #18A3DE;
 }
+
+.menu-header{
+	background-color: #D92525;
+}
+
 
 .techshuttle-header{
 	background-color: #39DB4F;
@@ -90,38 +101,21 @@ b{
     /* background-color: #88D1ED; */
 }
 
-#fancypanel{
+#fancy{
 	font-size: 1.6em;
 	font-weight: 300;
 }
-#datepanel{
+#date{
 	font-size: 4em;
 	text-align: center;
 	font-weight: 500;
 }
-#datepanel .subdate{
+#date .subdate{
 	font-weight: 200;
 	font-size: 0.5em;
 	margin-top: 10px;
 	color: #cccccc;
 }
-/*
-#tweetpanel{
-	background-color: #F5F370;
-}
-
-#techpanel{
-	background-color: #B5E983;
-}
-
-#menupanel{
-    background-color: #FDC46D;
-}	
-
-#newspanel{
-    background-color: #C19ADB;
-}
-*/
 ul.tweet_list{
 
 }
@@ -156,8 +150,15 @@ ul.tweet_list li a{
 }
 
 #menu{
-    font-size: 32px;
+    font-size: 24px;
     line-height: 120%;
+    font-weight: 400;
+    text-transform: lowercase;
+}
+
+.foodtype{
+	opacity: 0.4;
+	font-weight: 300;
 }
 
 #news{
