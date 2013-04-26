@@ -26,10 +26,11 @@ h2{
 }
 h3{
 	color: #ffffff;
-	font-size: 1.7em;
+	font-size: 1.4em;
 	opacity: 0.9;
-	padding: 4px;
-	/*text-transform: uppercase;*/
+	padding: 4px 4px 6px 6px;
+	font-weight: 400;
+	text-transform: lowercase;
 }
 
 b{
@@ -78,14 +79,30 @@ b{
 }
 
 .techshuttle-header{
-	background-color: #FF9D00;
+	background-color: #39DB4F;
 }
 .fancy-header{
-	background-color: #39DB4F;
+	background-color: #E02671;
     /* background-color: #88D1ED; */
 }
+.date-header{
+	background-color: #FF9D00;
+    /* background-color: #88D1ED; */
+}
+
 #fancypanel{
 	font-size: 2em;
+}
+#datepanel{
+	font-size: 4em;
+	text-align: center;
+	font-weight: 500;
+}
+#datepanel .subdate{
+	font-weight: 200;
+	font-size: 0.5em;
+	margin-top: 10px;
+	color: #cccccc;
 }
 /*
 #tweetpanel{
@@ -146,18 +163,22 @@ ul.tweet_list li a{
     font-size: 28px;
 }
 
+/** you are a terrible person. http://css-tricks.com/semantic-class-names/ **/
+
 .big_bold{
-    font-size: 80px;
-    font-weight: bold;
+    font-size: 60px;
+    font-weight: 600;
 }
 
 .big{
     font-size: 54px;
+    font-weight: 400;
+}
 }
 
 .medium_bold{
     font-size: 32px;
-    font-weight: bold;
+    font-weight: 500;
 }
 
 .medium{
