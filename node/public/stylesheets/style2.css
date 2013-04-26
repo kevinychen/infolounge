@@ -93,14 +93,16 @@ b{
 	background-color: #39DB4F;
 }
 .fancy-header{
-	background-color: #E02671;
+	background-color: #CC38F5;
     /* background-color: #88D1ED; */
 }
 .date-header{
 	background-color: #FF9D00;
     /* background-color: #88D1ED; */
 }
-
+.img-header{
+	background-color: #CC38F5;
+}
 #fancy{
 	font-size: 1.6em;
 	font-weight: 300;

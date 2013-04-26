@@ -54,6 +54,21 @@
       $("#weatherbanner").delay(500).slideDown("slow");
       $("#tweetpanel").delay(600).slideDown("slow");
 
+      t = setInterval(function(){
+        if ($("#tweet_feed").html() != ""){
+          clearInterval(t);
+          processPic();
+        }
+      },300);
+
+      function processPic(){
+        tweetfeed = $("#tweet_feed").html();
+        match = tweetfeed.match(/pic\.twitter([^<]+)/);
+        imgurl = match[0];
+        $("#img").html("<img src='http://" + imgurl + "' />");
+        $("#imgpanel").delay(600).slideDown("slow");
+      }
+
     });
 </script>
 
@@ -127,7 +142,16 @@
               </div>
             </div>  
           </div>
-
+<!--
+          <div class="row">
+            <div class="large-12 columns" id='imgpanel'>
+              <h3 class='img-header'>Image</h3>
+              <div class='panel'>
+                <div id="img"></div>
+              </div>
+            </div>  
+          </div>
+-->
         </div>
         <!--
         <div id='' class='panel'>
