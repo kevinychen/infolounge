@@ -26,9 +26,9 @@ h2{
 }
 h3{
 	color: #ffffff;
-	font-size: 2em;
+	font-size: 1.7em;
 	opacity: 0.9;
-	padding: 5px;
+	padding: 4px;
 	/*text-transform: uppercase;*/
 }
 
@@ -70,6 +70,7 @@ b{
 	color: #ffffff;
 	background-color: rgba(0,0,0,0.3);
     padding: 15px;
+	margin-bottom: 20px;
 }
 
 .twitter-header{
@@ -79,26 +80,30 @@ b{
 .techshuttle-header{
 	background-color: #FF9D00;
 }
-#weatherbanner{
+.fancy-header{
+	background-color: #39DB4F;
     /* background-color: #88D1ED; */
 }
-
+#fancypanel{
+	font-size: 2em;
+}
+/*
 #tweetpanel{
-	/*background-color: #F5F370;*/
+	background-color: #F5F370;
 }
 
 #techpanel{
-	/*background-color: #B5E983;*/
+	background-color: #B5E983;
 }
 
 #menupanel{
-    /*background-color: #FDC46D;*/
+    background-color: #FDC46D;
 }	
 
 #newspanel{
-    /*background-color: #C19ADB;*/
+    background-color: #C19ADB;
 }
-
+*/
 ul.tweet_list{
 
 }

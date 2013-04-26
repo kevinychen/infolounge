@@ -19,6 +19,7 @@
     <script src="/javascripts/tech.js"></script>
     <script src="/javascripts/menu.js"></script>
     <script src="/javascripts/news.js"></script>
+    <script src="/javascripts/fancy.js"></script>
   	
 <script type='text/javascript'>
     lastUpdated = -1;
@@ -46,6 +47,7 @@
               getPredictions();
               getMenu();
               getNews();
+              getFancy();
           }
       }, 1000);
 
@@ -82,6 +84,7 @@
           </div>
         </div>
         <div class="large-5 columns">
+
           <div class="row">
             <div class="large-12 columns">
               <h3 class='techshuttle-header'>Tech Shuttle</h3>
@@ -90,13 +93,16 @@
               </div>
             </div>  
           </div>
+
           <div class="row">
             <div class="large-12 columns">
-              <div id='newspanel' class='panel'>
-                  <h3>Lounge News</h3>
-                  <ul id="news"></ul>
+              <h3 class='fancy-header'>Fancy</h3>
+              <div id='fancypanel' class='panel'>
+                <div id="fancy"></div>
               </div>
             </div>  
+          </div>
+          <div class="row">
           </div>
         </div>
         <!--
@@ -108,10 +114,14 @@
             <h3>Menu</h3>
             <ul id="menu"></ul>
         </div>
-        <div id='newspanel' class='panel'>
-            <h3>Lounge News</h3>
-            <ul id="news"></ul>
-        </div>
+          <div class="row">
+            <div class="large-12 columns">
+              <div id='newspanel' class='panel'>
+                  <h3>Lounge News</h3>
+                  <div id="news"></div>
+              </div>
+            </div>  
+          </div>
       -->
       </div>
     </div>
