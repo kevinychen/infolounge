@@ -26,7 +26,7 @@ function handlePredictions(data) {
         if (prediction.route_id == 'tech') {
             route = 'Tech to Kendall';
         } else if (prediction.route_id == 'saferidecambwest') {
-            route = 'Saferide Cambridge West';
+            route = 'Saferide';
         } else {
             route = prediction.route_id;
         }
