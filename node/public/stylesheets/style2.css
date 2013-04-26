@@ -91,7 +91,8 @@ b{
 }
 
 #fancypanel{
-	font-size: 2em;
+	font-size: 1.6em;
+	font-weight: 300;
 }
 #datepanel{
 	font-size: 4em;
