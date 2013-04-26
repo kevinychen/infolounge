@@ -1,0 +1,164 @@
+@font-face { 
+	font-family: airplane; 
+	font-weight: normal;
+	src: url('airplane.ttf'); 
+} 
+
+body{
+	background-image: url('bg2.jpg');
+	font-family: Roboto, arial;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+}
+
+h1{
+	font-family: Roboto, arial;
+	font-size: 40px;
+	color: #eeeeee;
+	margin-top: 20px;
+}
+
+h2{
+	font-family: Roboto, arial;
+	font-size: 20px;
+	color: #000000;
+}
+h3{
+	color: #ffffff;
+	font-size: 2em;
+	opacity: 0.9;
+	padding: 5px;
+	/*text-transform: uppercase;*/
+}
+
+b{
+    font-weight: bold;
+}
+
+#content{
+	margin: 20px;
+	height: calc(100% - 40px);
+	height: -webkit-calc(100% - 40px);
+	overflow: hidden;
+}
+#header{
+	height: 90px;
+}
+#clock {
+	font-family: Roboto, arial;
+	font-size: 5em;
+	/*position: fixed;*/
+	/*top: 20px;*/
+	/*right: 30px;*/
+	color: #eeeeee;
+	text-align: right;
+}
+
+.ampm {
+	color: #000000;
+}
+
+.banner{
+    width: -webkit-calc(100% - 50px);
+    padding: 15px;
+    display: none;
+}
+
+.panel{
+	display: none;
+	color: #ffffff;
+	background-color: rgba(0,0,0,0.3);
+    padding: 15px;
+}
+
+.twitter-header{
+	background-color: #18A3DE;
+}
+
+.techshuttle-header{
+	background-color: #FF9D00;
+}
+#weatherbanner{
+    /* background-color: #88D1ED; */
+}
+
+#tweetpanel{
+	/*background-color: #F5F370;*/
+}
+
+#techpanel{
+	/*background-color: #B5E983;*/
+}
+
+#menupanel{
+    /*background-color: #FDC46D;*/
+}	
+
+#newspanel{
+    /*background-color: #C19ADB;*/
+}
+
+ul.tweet_list{
+
+}
+ul.tweet_list li{
+	clear: both;
+	min-height: 60px;
+	font-size: 1.1em;
+	border-bottom: solid 1px #333333;
+	padding: 10px;
+	color: #cccccc;
+	overflow: auto;
+}
+ul.tweet_list li a{
+	font-weight: 500;
+	color: #ffffff;
+	line-height: normal;
+	text-decoration: none;
+}
+.tweet_avatar{
+	float: left;
+	margin-right: 10px;
+}
+.tweet_time{
+	display: none;
+}
+
+#weather td,th{
+    padding-left: 26px;
+    padding-right: 26px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#menu{
+    font-size: 32px;
+    line-height: 120%;
+}
+
+#news{
+    font-size: 28px;
+}
+
+.big_bold{
+    font-size: 80px;
+    font-weight: bold;
+}
+
+.big{
+    font-size: 54px;
+}
+
+.medium_bold{
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.medium{
+    font-size: 32px;
+}
+
+.small{
+    font-size: 18px;
+}

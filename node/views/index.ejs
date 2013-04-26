@@ -4,7 +4,8 @@
     <title><%= title %></title>
     <!-- STYLESHEETS -->
     <link rel='stylesheet' href='/stylesheets/reset.css' />
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/plugins/foundation/css/foundation.css' />
+    <link rel='stylesheet' href='/stylesheets/style2.css' />
 
     <!-- FONTS -->
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,400italic,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
@@ -36,7 +37,7 @@
       // Update the time
       window.setInterval(function() {
           now = new Date();
-          document.getElementById('clock').innerHTML=dateFormat(now, 'ddd, mmm d "&nbsp;" h:MM "<span class=\'ampm\'>"TT"</span>"');
+          document.getElementById('clock').innerHTML=dateFormat(now, 'h:MM "<span class=\'ampm\'>"TT"</span>"');
 
           if (now.getMinutes() != lastUpdated) {
               lastUpdated = now.getMinutes();
@@ -57,32 +58,61 @@
   </head>
   <body>
   	<div id='content'>
-      <div id='header'>
-          <h1>infolounge</h1>
-          <h2>beta v2.1</h2>
-
-          <div id='clock'></div>
+      <div class="row">
+        <div class="large-6 columns">
+          <div id='header'>
+              <h1>infolounge</h1>
+              <h2>beta v2.1</h2>
+          </div>
+        </div>
+        <div class="large-6 columns">
+            <div id='clock'></div>
+        </div>
       </div>
-
+      <!--
       <div id='weatherbanner' class='banner'>
           <div id="weather"></div>
       </div>
-
-      <div id='tweetpanel' class='panel'>
-          <h3>Twitter</h3>
-          <div id='tweet_feed'></div>
-      </div>
-      <div id='techpanel' class='panel'>
-          <h3>Tech Shuttle</h3>
-          <ul id="predictions"></ul>
-      </div>
-      <div id='menupanel' class='panel'>
-          <h3>Menu</h3>
-          <ul id="menu"></ul>
-      </div>
-      <div id='newspanel' class='panel'>
-          <h3>Lounge News</h3>
-          <ul id="news"></ul>
+      -->
+      <div class="row">
+        <div class="large-7 columns">
+          <h3 class='twitter-header'>Twitter</h3>
+          <div id='tweetpanel' class='panel'>
+              <div id='tweet_feed'></div>
+          </div>
+        </div>
+        <div class="large-5 columns">
+          <div class="row">
+            <div class="large-12 columns">
+              <h3 class='techshuttle-header'>Tech Shuttle</h3>
+              <div id='techpanel' class='panel'>
+                <ul id="predictions"></ul>
+              </div>
+            </div>  
+          </div>
+          <div class="row">
+            <div class="large-12 columns">
+              <div id='newspanel' class='panel'>
+                  <h3>Lounge News</h3>
+                  <ul id="news"></ul>
+              </div>
+            </div>  
+          </div>
+        </div>
+        <!--
+        <div id='' class='panel'>
+            <h3>Time</h3>
+            <div>Clock</div>
+        </div>
+        <div id='menupanel' class='panel'>
+            <h3>Menu</h3>
+            <ul id="menu"></ul>
+        </div>
+        <div id='newspanel' class='panel'>
+            <h3>Lounge News</h3>
+            <ul id="news"></ul>
+        </div>
+      -->
       </div>
     </div>
   </body>
