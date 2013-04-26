@@ -53,7 +53,6 @@
           }
       }, 1000);
 
-      $("#weatherbanner").delay(500).slideDown("slow");
       $("#tweetpanel").delay(600).slideDown("slow");
 
       t = setInterval(function(){
@@ -88,16 +87,19 @@
             <div id='clock'></div>
         </div>
       </div>
-      <!--
-      <div id='weatherbanner' class='banner'>
-          <div id="weather"></div>
-      </div>
-      -->
       <div class="row">
         <div class="large-7 columns" id='tweetpanel'>
-          <h3 class='twitter-header'>Twitter</h3>
-          <div  class='panel'>
+          <div class="row">
+            <h3 class='weather-header'>Weather</h3>
+            <div class='panel'>
+              <div id='weather'></div>
+            </div>
+          </div>
+          <div class="row">
+            <h3 class='twitter-header'>Twitter</h3>
+            <div  class='panel'>
               <div id='tweet_feed'></div>
+            </div>
           </div>
         </div>
         <div class="large-5 columns">

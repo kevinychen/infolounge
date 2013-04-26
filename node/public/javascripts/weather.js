@@ -3,13 +3,13 @@ function getWeather() {
         zipcode: '02139',
         unit: 'f',
         success: function(weather) {
-            html = '<table>';
-            html += '<tr><td><img width="135px" src="images/weather/'+weather.code+'d.png"></td>';
-            html += '<td><span class="small">temp | feel</span><br/><span class="big_bold">'+weather.temp+'&deg;'+weather.units.temp+' | ' + weather.wind.chill + '&deg;' + weather.units.temp + '</span><br/><br/><span class="medium">' + weather.currently + '</span></td><td></td>';
-
-            html += '<td><img width="135px" src="images/weather/' + weather.todayCode + 'd.png">';
-            html += '<td><span class="medium">Today</span><br/><br/><span class="big">' + weather.high + '&deg;' + weather.units.temp + ' | ' + weather.low + '&deg;' + weather.units.temp + '</span><br/><br/><span class="medium">' + weather.forecast + '</span></td></tr>';
-            html += '</table>';
+            html = '<div class="row">';
+            html += '<div class="large-4 columns"><img src="images/weather/' + weather.code + '.png"></div>';
+            html += '<div class="large-8 columns">';
+            html += '<span class="medium">Now</span><br/>';
+            html += '<span class="big_bold">' + weather.temp + '&deg;F / ' + ((weather.temp-32)*(5/9)).toFixed() + '&deg;C</span><br/>';
+            html += '<span class="medium">Feel ' + weather.wind.chill + '&deg;F / ' + ((weather.wind.chill-32)*(5/9)).toFixed() + '&deg;C</span><br/>';
+            html += '</div></div>';
 
             $("#weather").html(html);
         },

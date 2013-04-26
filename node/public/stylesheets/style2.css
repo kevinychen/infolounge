@@ -80,8 +80,12 @@ b{
 .module{
 }
 
+.weather-header{
+    background-color: #18A3DE;
+}
+
 .twitter-header{
-	background-color: #18A3DE;
+	background-color: #CAB23E;
 }
 
 .menu-header{
@@ -144,11 +148,8 @@ ul.tweet_list li a{
 	display: none;
 }
 
-#weather td,th{
-    padding-left: 26px;
-    padding-right: 26px;
+#weather{
     text-align: center;
-    vertical-align: middle;
 }
 
 #menu{
