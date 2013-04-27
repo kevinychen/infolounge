@@ -15,35 +15,41 @@ function getItems(req, res) {
         };
 
         now = new Date();
-        var menu = '';
-
-        var time = now.getHours() + ":" + now.getMinutes();
-        if (time > "20:30" || time < "12:00") {
-            res.json({});
-            return;
-        }
-
         var date = dateformat.dateFormat(now, 'dddd, mmmm dS, yyyy');
         var dateIndex = body.indexOf(date);
         if (dateIndex == -1) {
             res.json({});
             return;
         }
-        var dinnerIndex = body.indexOf('Dinner', dateIndex);
-        if (dinnerIndex == -1) {
+        var endIndex = body.indexOf('No items exist on this day.', dateIndex); // always at end
+        var today = body.substring(dateIndex, endIndex);
+
+        var breakfastIndex = today.indexOf('Breakfast');
+        var brunchIndex = today.indexOf('Brunch');
+        var dinnerIndex = today.indexOf('Dinner');
+
+        var time = dateformat.dateFormat(now, 'hh:mm');
+        if (time > '08:00' && time < '10:15' && breakfastIndex != -1) {
+            var foodIndex = today.indexOf('<strong>breakfast</strong>', breakfastIndex);
+            var breakfast = today.substring(foodIndex + 1).match(/<strong>[^<>]*<\/strong>/g)[0];
+            res.json({'Breakfast': breakfast});
+        } else if (time > '09:45' && time < '13:15' && brunchIndex != -1) {
+            var comfortsIndex = today.indexOf('<strong>comforts</strong>', brunchIndex);
+            var comforts = today.substring(comfortsIndex + 1).match(/<strong>[^<>]*<\/strong>/g)[0];
+            res.json({'Brunch': comforts});
+        } else if (time > '17:15' && time < '20:45' && dinnerIndex != -1) {
+            var comfortsIndex = today.indexOf('<strong>comforts</strong>', dinnerIndex);
+            var grillIndex = today.indexOf('<strong>smokehouse grill</strong>', dinnerIndex);
+            var stirfryIndex = today.indexOf('<strong>action</strong>', dinnerIndex);
+
+            var comforts = today.substring(comfortsIndex + 1).match(/<strong>[^<>]*<\/strong>/g)[0];
+            var grill = today.substring(grillIndex + 1).match(/<strong>[^<>]*<\/strong>/g)[0];
+            var stirfry = today.substring(stirfryIndex + 1).match(/<strong>[^<>]*<\/strong>/g)[0];
+
+            res.json({'Comfort': comforts, 'Grill': grill, 'Stir Fry': stirfry});
+        } else {
             res.json({});
-            return;
         }
-
-        var comfortsIndex = body.indexOf('<strong>comforts</strong>', dinnerIndex);
-        var grillIndex = body.indexOf('<strong>smokehouse grill</strong>', dinnerIndex);
-        var stirfryIndex = body.indexOf('<strong>action</strong>', dinnerIndex);
-
-        var comforts = body.substring(comfortsIndex + 1).match(/<strong>[^<>]*<\/strong>/g)[0];
-        var grill = body.substring(grillIndex + 1).match(/<strong>[^<>]*<\/strong>/g)[0];
-        var stirfry = body.substring(stirfryIndex + 1).match(/<strong>[^<>]*<\/strong>/g)[0];
-
-        res.json({'Comfort': comforts, 'Grill': grill, 'Stir Fry': stirfry});
     });
 };
 
