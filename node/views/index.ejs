@@ -15,6 +15,7 @@
     <script src="http://tweet.seaofclouds.com/jquery.tweet.js" charset="utf-8"></script>
     <script type="text/javascript" src="/javascripts/jquery.simpleWeather.js" charset="utf-8"></script>
     <script src="/javascripts/dateformat.js"></script>
+    <script src="/javascripts/date.js"></script>
     <script src="/javascripts/weather.js"></script>
     <script src="/javascripts/tech.js"></script>
     <script src="/javascripts/menu.js"></script>
@@ -39,6 +40,7 @@
       window.setInterval(function() {
           now = new Date();
           document.getElementById('clock').innerHTML=dateFormat(now, 'h:MM "<span class=\'ampm\'>"TT"</span>"');
+          getDate();
 
           if (now.getMinutes() != lastUpdated) {
               lastUpdated = now.getMinutes();
@@ -51,7 +53,6 @@
           }
       }, 1000);
 
-      $("#weatherbanner").delay(500).slideDown("slow");
       $("#tweetpanel").delay(600).slideDown("slow");
 
       t = setInterval(function(){
@@ -86,16 +87,19 @@
             <div id='clock'></div>
         </div>
       </div>
-      <!--
-      <div id='weatherbanner' class='banner'>
-          <div id="weather"></div>
-      </div>
-      -->
       <div class="row">
         <div class="large-7 columns" id='tweetpanel'>
-          <h3 class='twitter-header'>Twitter</h3>
-          <div  class='panel'>
+          <div class="row">
+            <h3 class='weather-header'>Weather</h3>
+            <div class='panel'>
+              <div id='weather'></div>
+            </div>
+          </div>
+          <div class="row">
+            <h3 class='twitter-header'>Twitter</h3>
+            <div  class='panel'>
               <div id='tweet_feed'></div>
+            </div>
           </div>
         </div>
         <div class="large-5 columns">
@@ -107,10 +111,6 @@
               <h3 class="date-header">Today</h3>
               <div class='panel' style="display: block;">
                   <div id="date">
-                    Friday, June 4
-                    <div class="subdate">
-                      happy birthday, becky
-                    </div>
                   </div>
               </div>
             </div>
