@@ -34,6 +34,7 @@ app.configure('development', function(){
 app.get('/users', user.list);
 app.get('/menu.json', info.getItems);
 app.get('/news.json', info.getNews);
+app.get('/img.json', info.getImg);
 app.get('/', routes.index);
 
 app.get('/:num', routes.index);

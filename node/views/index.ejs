@@ -21,6 +21,7 @@
     <script src="/javascripts/menu.js"></script>
     <script src="/javascripts/news.js"></script>
     <script src="/javascripts/fancy.js"></script>
+    <script src="/javascripts/img.js"></script>
   	
 <script type='text/javascript'>
     lastUpdated = -1;
@@ -49,26 +50,11 @@
               getPredictions();
               getMenu();
               getNews();
-              getFancy();
+              getImg();
           }
       }, 1000);
 
       $("#tweetpanel").delay(600).slideDown("slow");
-
-      t = setInterval(function(){
-        if ($("#tweet_feed").html() != ""){
-          clearInterval(t);
-          processPic();
-        }
-      },300);
-
-      function processPic(){
-        tweetfeed = $("#tweet_feed").html();
-        match = tweetfeed.match(/pic\.twitter([^<]+)/);
-        imgurl = match[0];
-        $("#img").html("<img src='http://" + imgurl + "' />");
-        $("#imgpanel").delay(600).slideDown("slow");
-      }
 
     });
 </script>
@@ -134,6 +120,7 @@
             </div>  
           </div>
 
+          <!--
           <div class="row">
             <div class="large-12 columns" id='fancypanel'>
               <h3 class='fancy-header'>Fancy</h3>
@@ -142,7 +129,7 @@
               </div>
             </div>  
           </div>
-<!--
+          -->
           <div class="row">
             <div class="large-12 columns" id='imgpanel'>
               <h3 class='img-header'>Image</h3>
@@ -151,7 +138,6 @@
               </div>
             </div>  
           </div>
--->
         </div>
         <!--
         <div id='' class='panel'>

@@ -68,6 +68,24 @@ function getNews(req, res) {
     return;
 };
 
+function getImg(req, res) {
+    var imgurl = req.query.imgurl;
+    request(imgurl, function(error, response, body) {
+        if (error || response.statusCode != 200) {
+            res.json({});
+            return;
+        };
+        var imageLink = body.match(new RegExp('<img class="large media-slideshow-image"[^>]+'));
+        if (imageLink == null) {
+            res.json({});
+            return;
+        }
+        var realurl = imageLink[0].match(/src="[^"]+/)[0].substring(5); // trim to only url
+        res.json({'imgurl': realurl});
+    });
+};
+
 exports.getItems = getItems;
 exports.getNews = getNews;
+exports.getImg = getImg;
 
