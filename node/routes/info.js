@@ -28,7 +28,7 @@ function getItems(req, res) {
         var brunchIndex = today.indexOf('Brunch');
         var dinnerIndex = today.indexOf('Dinner');
 
-        var time = dateformat.dateFormat(now, 'hh:mm');
+        var time = dateformat.dateFormat(now, 'HH:mm');
         if (time > '08:00' && time < '10:15' && breakfastIndex != -1) {
             var foodIndex = today.indexOf('<strong>breakfast</strong>', breakfastIndex);
             var breakfast = today.substring(foodIndex + 1).match(/<strong>[^<>]*<\/strong>/g)[0];
@@ -37,7 +37,7 @@ function getItems(req, res) {
             var comfortsIndex = today.indexOf('<strong>comforts</strong>', brunchIndex);
             var comforts = today.substring(comfortsIndex + 1).match(/<strong>[^<>]*<\/strong>/g)[0];
             res.json({'Brunch': comforts});
-        } else if (time > '17:15' && time < '20:45' && dinnerIndex != -1) {
+        } else if (time > '15:15' && time < '20:45' && dinnerIndex != -1) {
             var comfortsIndex = today.indexOf('<strong>comforts</strong>', dinnerIndex);
             var grillIndex = today.indexOf('<strong>smokehouse grill</strong>', dinnerIndex);
             var stirfryIndex = today.indexOf('<strong>action</strong>', dinnerIndex);
