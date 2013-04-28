@@ -99,11 +99,11 @@ b{
 }
 
 .weather-header{
-    background-color: #18A3DE;
+    background-color: #4099FF;
 }
 
 .twitter-header{
-	background-color: #CAB23E;
+	background-color: #ae113e;
 }
 
 .menu-header{
@@ -119,7 +119,7 @@ b{
     /* background-color: #88D1ED; */
 }
 .date-header{
-	background-color: #FF9D00;
+	background-color: #ff991d;
     /* background-color: #88D1ED; */
 }
 .img-header{
@@ -140,6 +140,12 @@ b{
 	margin-top: 10px;
 	color: #cccccc;
 }
+#twitimg{
+	height: 300px;
+	position: relative;
+	padding: 0;
+}
+
 ul.tweet_list{
 
 }
