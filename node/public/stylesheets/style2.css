@@ -10,7 +10,24 @@ body{
 	position: absolute;
 	height: 100%;
 	width: 100%;
+/*
+	-moz-animation-duration:1s;
+	-moz-animation-iteration-count: infinite;
+	-moz-animation-timing-function: linear;
+	-moz-animation-name: rotate;
+	overflow: hidden;
+*/
 }
+
+/*
+@-moz-keyframes rotate{
+from
+{-moz-transform:rotate(0deg);}
+to 
+{-moz-transform:rotate(360deg);}
+}
+*/
+
 
 h1{
 	font-family: Roboto, arial;
@@ -119,7 +136,7 @@ b{
 }
 #date .subdate{
 	font-weight: 200;
-	font-size: 0.5em;
+	font-size: 0.4em;
 	margin-top: 10px;
 	color: #cccccc;
 }
