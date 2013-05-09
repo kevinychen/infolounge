@@ -2,7 +2,7 @@ var imgURL = '/img.json';
 
 function getImg() {
     tweetfeed = $("#tweet_feed").html();
-    match = tweetfeed.match(/pic\.twitter([^<]+)/);
+    match = tweetfeed.match(/t.co\/[^"]+/);
     if (match == null) {
         $("#imgpanel").slideUp("slow");
         return;

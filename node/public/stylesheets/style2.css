@@ -146,32 +146,57 @@ b{
 	padding: 0;
 }
 
-ul.tweet_list{
-
+ul.jta-tweet-list{
+    padding: 0;
+    list-style: none;
 }
-ul.tweet_list li{
+ul.jta-tweet-list li{
 	clear: both;
 	min-height: 60px;
-	font-size: 1.2em;
+	font-size: 1.4em;
 	font-weight: 300;
 	border-bottom: solid 1px #333333;
 	padding: 10px;
 	color: #cccccc;
 	overflow: auto;
 }
-ul.tweet_list li a{
+ul.jta-tweet-list li a{
 	font-weight: 500;
 	color: #ffffff;
 	line-height: normal;
 	text-decoration: none;
 }
-.tweet_avatar{
+.jta-tweet-profile-image{
 	float: left;
 	margin-right: 10px;
 }
-.tweet_time{
+.jta-tweet-profile-image img
+{
+    width: 84px;
+    height: 84px;
+}
+.jta-tweet-user-screen-name-link{
 	display: none;
 }
+.jta-tweet-attributes
+{
+	display: block;
+    font-size: 0.8em;
+    margin-top: 3px;
+}
+.jta-tweet-twitter-bird-icon{
+	float: left;
+	width: 19px;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	background-image: url(http://si0.twimg.com/images/dev/cms/intents/bird/bird_gray/bird_16_gray.png);
+}
+.jta-tweet-timestamp-link{
+    color: #999;
+	text-decoration: none;
+}
+
 
 #weather{
     text-align: center;
