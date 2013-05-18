@@ -59,7 +59,7 @@ function getItems(req, res) {
 function getWeatherAlert(req, res) {
     request(weatherURL, function(error, response, body) {
         if (error || response.statusCode != 200) {
-            res.json({'buggy'});
+            res.json({});
             return;
         };
 
