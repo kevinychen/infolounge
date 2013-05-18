@@ -1,10 +1,11 @@
-// Server side code
-
 var dateformat = require('../public/javascripts/dateformat.js');
 var request = require('request');
 var fs = require('fs');
 
 var menuURL = 'http://www.cafebonappetit.com/menu/your-cafe/mit/cafes/details/401/next';
+var newsFile = 'public/news.dat';
+
+var weatherURL = 'http://forecast.weather.gov/MapClick.php?x=226&y=165&site=aly&zmx=1&zmy=1&map_x=225.5&map_y=165.13333129882812';
 var newsFile = 'public/news.dat';
 
 function getItems(req, res) {
@@ -53,6 +54,32 @@ function getItems(req, res) {
     });
 };
 
+
+
+function getWeatherAlert(req, res) {
+    request(weatherURL, function(error, response, body) {
+        if (error || response.statusCode != 200) {
+            res.json({'buggy'});
+            return;
+        };
+
+        var dateIndex = 1;
+
+        var endIndex = body.indexOf('<h1>7-DAY FORECAST</h1>', dateIndex); // always at end
+        var today = body.substring(dateIndex, endIndex);
+
+        if (breakfastIndex != -1) {
+            var foodIndex = today.indexOf('Freeze Warning', dateIndex);
+            var breakfast = today.substring(foodIndex + 1).match(/Severe/g)[0];
+            res.json({'ATTENTION:': breakfast});
+        } else {
+            res.json({'BETA TESTING ALERTS': 'Do not panic'});
+        }
+    });
+};
+
+
+
 function getNews(req, res) {
     if (fs.existsSync(newsFile)) {
         data = fs.readFileSync(newsFile, 'utf8').split('\n');
@@ -86,6 +113,6 @@ function getImg(req, res) {
 };
 
 exports.getItems = getItems;
+exports.getWeatherAlert = getWeatherAlert;
 exports.getNews = getNews;
 exports.getImg = getImg;
-

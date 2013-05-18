@@ -11,6 +11,7 @@ function getDate() {
         ['michaelx', 'July 28, 1993 00:00:00'],
         ['becky', 'September 4, 1993 18:00:00'],
         ['sumit', 'December 19, 1993 00:00:00'],
+	['jfabi', 'December 29, 1992 06:00:00'],
         ['norman', 'February 5, 1993 06:00:00'],
     ];
 

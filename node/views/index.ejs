@@ -22,6 +22,7 @@
     <script src="/javascripts/menu.js"></script>
     <script src="/javascripts/news.js"></script>
     <script src="/javascripts/fancy.js"></script>
+    <script src="/javascripts/alerts.js"></script>
     <script src="/javascripts/img.js"></script>
   	
 <script type='text/javascript'>
@@ -62,7 +63,6 @@
 
           if (now.getMinutes() != lastUpdated) {
               lastUpdated = now.getMinutes();
-
               getWeather();
               getPredictions();
               getMenu();
@@ -92,6 +92,17 @@
       </div>
       <div class="row">
         <div class="large-7 columns">
+
+	<div class="row">
+            <div class="large-12 column" id='alertspanel'>
+              <h3 class='menu-header'>Alerts</h3>
+              <div class='panel'>
+                  <div id='alerts'>
+		</div>
+              </div>
+            </div>
+          </div>
+
 
           <div class="row">
             <div class="large-12 columns" id='weatherpanel'>
@@ -142,16 +153,6 @@
             </div>  
           </div>
 
-          <!--
-          <div class="row">
-            <div class="large-12 columns" id='fancypanel'>
-              <h3 class='fancy-header'>Fancy</h3>
-              <div class='panel'>
-                <div id="fancy"></div>
-              </div>
-            </div>  
-          </div>
-          -->
           <div class="row">
             <div class="large-12 columns" id='imgpanel'>
               <h3 class='img-header'>Image</h3>
@@ -166,7 +167,7 @@
             <h3>Time</h3>
             <div>Clock</div>
         </div>
-        <div id='menupanel' class='panel'>
+        <div id='panel' class='panel'>
             <h3>Menu</h3>
             <ul id="menu"></ul>
         </div>

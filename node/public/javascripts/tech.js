@@ -13,7 +13,7 @@ function handlePredictions(data) {
     var elem = '';
     for (var i = 0; i < 2; i++) {
         prediction = predictions[i];
-        elem += '<li><span class="big_bold">';
+        elem += '<li><span class="min_bold">';
 
         var minutes = prediction.minutes;
         if (minutes == 0) {
@@ -24,13 +24,17 @@ function handlePredictions(data) {
 
         var route = '';
         if (prediction.route_id == 'tech') {
-            route = 'Tech to Kendall';
+            route = 'Tech to Kendall Sq';
         } else if (prediction.route_id == 'saferidecambwest') {
-            route = 'Saferide';
+            route = 'Saferide to Central Sq';
+        } else if (prediction.route_id == 'saferidecamball') {
+            route = 'Saferide to Central Sq';
+        } else if (prediction.route_id == 'traderjwf') {
+            route = 'Saferide to Trader Joes/Central Sq';
         } else {
             route = prediction.route_id;
         }
-        elem += ('</span>&nbsp;&nbsp;<span class="medium">' + route + '</span></li>');
+        elem += ('</span>&nbsp;&nbsp;<span class="medium"><br/>' + route + '</span></li>');
     }
 
     $("#techpanel").slideDown("slow");

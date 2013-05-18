@@ -33,6 +33,7 @@ app.configure('development', function(){
 
 app.get('/users', user.list);
 app.get('/menu.json', info.getItems);
+app.get('/alerts.json', info.getWeatherAlert);
 app.get('/news.json', info.getNews);
 app.get('/img.json', info.getImg);
 app.get('/', routes.index);
