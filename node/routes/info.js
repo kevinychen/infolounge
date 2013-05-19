@@ -8,7 +8,7 @@ var newsFile = 'public/news.dat';
 var weatherURL = 'http://forecast.weather.gov/MapClick.php?x=226&y=165&site=aly&zmx=1&zmy=1&map_x=225.5&map_y=165.13333129882812';
 var newsFile = 'public/news.dat';
 
-function getItems(req, res) {
+function getMenu(req, res) {
     request(menuURL, function(error, response, body) {
         if (error || response.statusCode != 200) {
             res.json({});
@@ -32,20 +32,20 @@ function getItems(req, res) {
         var time = dateformat.dateFormat(now, 'HH:mm');
         if (time > '08:00' && time < '10:15' && breakfastIndex != -1) {
             var foodIndex = today.indexOf('<strong>breakfast</strong>', breakfastIndex);
-            var breakfast = today.substring(foodIndex + 1).match(/<strong>[^<>]*<\/strong>/g)[0];
+            var breakfast = today.substring(foodIndex + 1).match(/<strong>[^<>]+/g)[0].substring(8);
             res.json({'Breakfast': breakfast});
         } else if (time > '09:45' && time < '13:15' && brunchIndex != -1) {
             var comfortsIndex = today.indexOf('<strong>comforts</strong>', brunchIndex);
-            var comforts = today.substring(comfortsIndex + 1).match(/<strong>[^<>]*<\/strong>/g)[0];
+            var comforts = today.substring(comfortsIndex + 1).match(/<strong>[^<>]+/g)[0].substring(8);
             res.json({'Brunch': comforts});
         } else if (time > '15:15' && time < '20:45' && dinnerIndex != -1) {
             var comfortsIndex = today.indexOf('<strong>comforts</strong>', dinnerIndex);
             var grillIndex = today.indexOf('<strong>smokehouse grill</strong>', dinnerIndex);
             var stirfryIndex = today.indexOf('<strong>action</strong>', dinnerIndex);
 
-            var comforts = today.substring(comfortsIndex + 1).match(/<strong>[^<>]*<\/strong>/g)[0];
-            var grill = today.substring(grillIndex + 1).match(/<strong>[^<>]*<\/strong>/g)[0];
-            var stirfry = today.substring(stirfryIndex + 1).match(/<strong>[^<>]*<\/strong>/g)[0];
+            var comforts = today.substring(comfortsIndex + 1).match(/<strong>[^<>]+/g)[0].substring(8);
+            var grill = today.substring(grillIndex + 1).match(/<strong>[^<>]+/g)[0].substring(8);
+            var stirfry = today.substring(stirfryIndex + 1).match(/<strong>[^<>]+/g)[0].substring(8);
 
             res.json({'Comfort': comforts, 'Grill': grill, 'Stir Fry': stirfry});
         } else {
@@ -112,7 +112,7 @@ function getImg(req, res) {
     });
 };
 
-exports.getItems = getItems;
+exports.getMenu = getMenu;
 exports.getWeatherAlert = getWeatherAlert;
 exports.getNews = getNews;
 exports.getImg = getImg;
