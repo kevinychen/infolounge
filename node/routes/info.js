@@ -5,8 +5,8 @@ var fs = require('fs');
 var menuURL = 'http://www.cafebonappetit.com/menu/your-cafe/mit/cafes/details/401/next';
 var newsFile = 'public/news.dat';
 
-var weatherURL = 'http://forecast.weather.gov/MapClick.php?x=226&y=165&site=aly&zmx=1&zmy=1&map_x=225.5&map_y=165.13333129882812';
-var newsFile = 'public/news.dat';
+//var weatherURL = 'http://forecast.weather.gov/MapClick.php?x=226&y=165&site=aly&zmx=1&zmy=1&map_x=225.5&map_y=165.13333129882812';
+var alertURL = 'http://emergency.mit.net';
 
 function getMenu(req, res) {
     request(menuURL, function(error, response, body) {
@@ -56,25 +56,28 @@ function getMenu(req, res) {
 
 
 
-function getWeatherAlert(req, res) {
-    request(weatherURL, function(error, response, body) {
+function getAlert(req, res) {
+    request(alertURL, function(error, response, body) {
         if (error || response.statusCode != 200) {
             res.json({});
             return;
         };
 
-        var dateIndex = 1;
+        var now = new Date();
 
-        var endIndex = body.indexOf('<h1>7-DAY FORECAST</h1>', dateIndex); // always at end
-        var today = body.substring(dateIndex, endIndex);
-
-        if (breakfastIndex != -1) {
-            var foodIndex = today.indexOf('Freeze Warning', dateIndex);
-            var breakfast = today.substring(foodIndex + 1).match(/Severe/g)[0];
-            res.json({'ATTENTION:': breakfast});
-        } else {
-            res.json({'BETA TESTING ALERTS': 'Do not panic'});
+        var startIndex = body.indexOf('<div id="contentannouncebox">');
+        var data = body.substring(startIndex, body.indexOf('</div>', startIndex));
+        var alertsStr = data.match(/[^<>]{9,9999}/g); // ignore html tags
+        var alerts = {};
+        for (i = alertsStr.length; --i >= 0; ) {
+            if (now.getTime() - new Date(alertsStr[i]).getTime() < 1000 * 60 * 60 * 10 /* 10 hours */) {
+                alerts[alertsStr[i]] = alertsStr[i + 1];
+            }
+            if (Object.keys(alerts).length >= 1) {
+                break;
+            }
         }
+        res.json(alerts);
     });
 };
 
@@ -113,6 +116,6 @@ function getImg(req, res) {
 };
 
 exports.getMenu = getMenu;
-exports.getWeatherAlert = getWeatherAlert;
+exports.getAlert = getAlert;
 exports.getNews = getNews;
 exports.getImg = getImg;

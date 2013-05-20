@@ -103,6 +103,10 @@ b{
     background-color: #4099FF;
 }
 
+.alerts-header{
+    background-color: #D92525;
+}
+
 .twitter-header{
 	background-color: #ae113e;
 }
@@ -195,6 +199,12 @@ ul.jta-tweet-list li a{
 	text-decoration: none;
 }
 
+
+#alerts{
+    font-size: 36px;
+    line-height: 120%;
+    font-weight: 400;
+}
 
 #weather{
     text-align: center;

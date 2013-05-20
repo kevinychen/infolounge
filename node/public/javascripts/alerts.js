@@ -1,7 +1,7 @@
-var weatherURL = '/alerts.json';
+var alertsURL = '/alerts.json';
 
 function getAlerts() {
-    $.getJSON(weatherURL, function(data) {
+    $.getJSON(alertsURL, function(data) {
         if (jQuery.isEmptyObject(data)) {
             $("#alertspanel").slideUp("slow");
             return;
@@ -9,7 +9,7 @@ function getAlerts() {
 
         $("#alertspanel").slideDown("slow");
 
-        var elem = 'blah';
+        var elem = '';
         for (var type in data) {
             elem += ('<li><span class="foodtype">' + type + '</span> ' + data[type] + '</li>');
         }

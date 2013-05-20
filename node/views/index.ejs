@@ -64,6 +64,7 @@
           if (now.getMinutes() != lastUpdated) {
               lastUpdated = now.getMinutes();
               getWeather();
+              getAlerts();
               getPredictions();
               getMenu();
               getNews();
@@ -93,12 +94,11 @@
       <div class="row">
         <div class="large-7 columns">
 
-	<div class="row">
+          <div class="row">
             <div class="large-12 column" id='alertspanel'>
-              <h3 class='menu-header'>Alerts</h3>
+              <h3 class='alerts-header'>Alerts</h3>
               <div class='panel'>
-                  <div id='alerts'>
-		</div>
+                  <div id='alerts'></div>
               </div>
             </div>
           </div>
