@@ -5,11 +5,29 @@
 } 
 
 body{
-	background-image: url('bg.png');
+	background-image: url('bg2.jpg');
 	font-family: Roboto, arial;
 	position: absolute;
 	height: 100%;
+	width: 100%;
+/*
+	-moz-animation-duration:1s;
+	-moz-animation-iteration-count: infinite;
+	-moz-animation-timing-function: linear;
+	-moz-animation-name: rotate;
+	overflow: hidden;
+*/
 }
+
+/*
+@-moz-keyframes rotate{
+from
+{-moz-transform:rotate(0deg);}
+to
+{-moz-transform:rotate(360deg);}
+}
+*/
+
 
 h1{
 	font-family: Roboto, arial;
@@ -21,13 +39,16 @@ h1{
 h2{
 	font-family: Roboto, arial;
 	font-size: 20px;
-	color: #444444;
+	color: #ffffff;
+	opacity: 0.3;
 }
 h3{
 	color: #ffffff;
-	font-size: 2em;
-	margin-bottom: 14px;
-	opacity: 0.6;
+	font-size: 1.4em;
+	opacity: 0.9;
+	padding: 4px 4px 6px 6px;
+	font-weight: 400;
+	text-transform: lowercase;
 }
 
 b{
@@ -46,14 +67,17 @@ b{
 #clock {
 	font-family: Roboto, arial;
 	font-size: 5em;
-	position: fixed;
-	top: 20px;
-	right: 30px;
+	font-weight: 600;
+	/*position: fixed;*/
+	/*top: 20px;*/
+	/*right: 30px;*/
 	color: #eeeeee;
+	text-align: right;
 }
 
 .ampm {
-	color: #444444;
+	opacity: 0.3;
+	color: #ffffff;
 }
 
 .banner{
@@ -63,102 +87,159 @@ b{
 }
 
 .panel{
-        width: calc(50% - 50px);
-	width: -webkit-calc(50% - 50px);
-	margin-right: 20px;
+	color: #ffffff;
+	background-color: rgba(0,0,0,0.3);
+	margin-bottom: 20px;
 	padding: 15px;
-	display: none;
-	margin-bottom: 20px;
 }
 
-#weatherbanner{
-    background-color: #88D1ED;
-	float: left;
-    margin-bottom: 15px;
+.panel-content{
+	padding: 12px;
+}
+.module{
 }
 
-#tweetpanel{
-	background-color: #F5F370;
-	float: left;
-	max-height: 100%;
+.weather-header{
+    background-color: #4099FF;
 }
 
-#techpanel{
-	background-color: #B5E983;
-	float: left;
-    margin-bottom: 15px;
+.alerts-header{
+    background-color: #D92525;
 }
 
-#menupanel{
-    background-color: #FDC46D;
-    float: left;
-    margin-bottom: 15px;
+.twitter-header{
+	background-color: #ae113e;
 }
 
-#newspanel{
-    background-color: #C19ADB;
-    float: left;
-    margin-bottom: 15px;
+.menu-header{
+	background-color: #D92525;
 }
 
-ul.tweet_list{
 
+.techshuttle-header{
+	background-color: #39DB4F;
 }
-ul.tweet_list li{
-	margin-bottom: 20px;
-	clear: both;
-	min-height: 40px;
-	font-size: 1.1em;
-	border-bottom: solid 1px #CC3366;
-	padding-bottom: 20px;
+.fancy-header{
+	background-color: #CC38F5;
+    /* background-color: #88D1ED; */
 }
-ul.tweet_list li a{
+.date-header{
+	background-color: #ff991d;
+    /* background-color: #88D1ED; */
+}
+.img-header{
+	background-color: #CC38F5;
+}
+#fancy{
+	font-size: 1.6em;
+	font-weight: 300;
+}
+#date{
+	font-size: 4em;
+	text-align: center;
 	font-weight: 500;
-	color: #000000;
+}
+#date .subdate{
+	font-weight: 200;
+	font-size: 0.35em;
+	margin-top: 10px;
+	color: #cccccc;
+}
+#twitimg{
+	height: 300px;
+	position: relative;
+	padding: 0;
+}
+
+ul.jta-tweet-list{
+    padding: 0;
+    list-style: none;
+}
+ul.jta-tweet-list li{
+	clear: both;
+	min-height: 60px;
+	font-size: 1.3em;
+	font-weight: 300;
+	border-bottom: solid 1px #333333;
+	padding: 10px;
+	color: #cccccc;
+	overflow: auto;
+}
+ul.jta-tweet-list li a{
+	font-weight: 500;
+	color: #ffffff;
+	line-height: normal;
 	text-decoration: none;
 }
-.tweet_avatar{
+.jta-tweet-profile-image{
 	float: left;
 	margin-right: 10px;
 }
-.tweet_time{
-	display: none;
+.jta-tweet-profile-image img
+{
+    width: 84px;
+    height: 84px;
+}
+.jta-tweet-attributes
+{
+	display: block;
+    font-size: 0.8em;
+    margin-top: 3px;
+}
+.jta-tweet-twitter-bird-icon{
+	float: left;
+	width: 19px;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	background-image: url(http://si0.twimg.com/images/dev/cms/intents/bird/bird_gray/bird_16_gray.png);
+}
+.jta-tweet-timestamp-link{
+    color: #999;
+	text-decoration: none;
 }
 
-#weather td,th{
-    padding-left: 26px;
-    padding-right: 26px;
+
+#alerts{
+    font-size: 36px;
+    line-height: 120%;
+    font-weight: 400;
+}
+
+#weather{
     text-align: center;
-    vertical-align: middle;
+}
+
+.weather-temp{
+    font-size: 60px;
+    font-weight: 600;
+}
+
+.weather-feel{
+    font-size: 32px;
+}
+
+.tech-minutes{
+    font-size: 82px;
+    font-weight: 600;
+}
+
+.tech-route{
+    font-size: 32px;
 }
 
 #menu{
-    font-size: 32px;
+    font-size: 24px;
     line-height: 120%;
+    font-weight: 400;
+    text-transform: lowercase;
+}
+
+.foodtype{
+	opacity: 0.4;
+	font-weight: 300;
 }
 
 #news{
     font-size: 28px;
-}
-
-.big_bold{
-    font-size: 80px;
-    font-weight: bold;
-}
-
-.big{
-    font-size: 54px;
-}
-
-.medium_bold{
-    font-size: 32px;
-    font-weight: bold;
-}
-
-.medium{
-    font-size: 32px;
-}
-
-.small{
-    font-size: 18px;
 }

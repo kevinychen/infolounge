@@ -14,20 +14,16 @@ function getImg() {
             return;
         }
 
-
-        // will tidy up later ._.
-
         $("#imgpanel").slideDown("slow");
-        img = "url('"+data.imgurl+"')" ;
-        $("#twitimg").css({"background": img});
-        $("#twitimg").css({"background-position": "50% 50%"});
-        $("#twitimg").css({"-webkit-background-size": "cover"});
-        $("#twitimg").css({"-moz-background-size": "cover"});
-        $("#twitimg").css({"-o-background-size": "cover"});
-        $("#twitimg").css({"background-size": "cover"});
-        $("#twitimg").css({"background-repeat": "no-repeat"});
-
-        //$("#img").html("<img src='" + data.imgurl + "' alt='Image Not Found'/>");
+        $("#twitimg").css({
+            "background": "url('" + data.imgurl + "')", 
+            "background-position": "50% 50%",
+            "-webkit-background-size": "cover",
+            "-moz-background-size": "cover",
+            "-o-background-size": "cover",
+            "background-size": "cover",
+            "background-repeat": "no-repeat",
+        });
     });
 };
 

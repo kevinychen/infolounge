@@ -13,7 +13,7 @@ function handlePredictions(data) {
     var elem = '';
     for (var i = 0; i < 2; i++) {
         prediction = predictions[i];
-        elem += '<li><span class="min_bold">';
+        elem += '<li><span class="tech-minutes">';
 
         var minutes = prediction.minutes;
         if (minutes == 0) {
@@ -34,7 +34,7 @@ function handlePredictions(data) {
         } else {
             route = prediction.route_id;
         }
-        elem += ('</span>&nbsp;&nbsp;<span class="medium"><br/>' + route + '</span></li>');
+        elem += ('</span>&nbsp;&nbsp;<span class="tech-route"><br/>' + route + '</span></li>');
     }
 
     $("#techpanel").slideDown("slow");
