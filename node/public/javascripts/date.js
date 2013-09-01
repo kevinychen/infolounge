@@ -14,6 +14,7 @@ function getDate() {
         ['sumit', 'December 19, 1993 00:00:00'],
         ['jfabi', 'December 29, 1992 06:00:00'],
         ['norman', 'February 5, 1993 06:00:00'],
+        ['saya', 'September 2, 1993 00:00:00'],
     ];
 
     var dict = [];
@@ -33,7 +34,7 @@ function getDate() {
     }
     dict.sort();
     var elem = dateFormat(now, 'ddd, mmmm d');
-    for (var i = dict.length; --i >= dict.length - 2; ) {
+    for (var i = dict.length; --i >= dict.length - 3; ) {
 	elem += dict[i][1];
     }
     $("#date").html(elem);

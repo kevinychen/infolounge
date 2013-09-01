@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<DOCTYPE html>
 <html>
   <head>
     <title><%= title %></title>
@@ -59,7 +59,7 @@
       // Update the time
       window.setInterval(function() {
           now = new Date();
-          document.getElementById('clock').innerHTML=dateFormat(now, 'h:MM "<span class=\'ampm\'>"TT"</span>"');
+          document.getElementById('clock').innerHTML=dateFormat(now, 'H:MM');
           getDate();
 
           if (now.getMinutes() != lastUpdated) {
@@ -85,7 +85,7 @@
         <div class="large-6 columns">
           <div id='header'>
               <h1>infolounge</h1>
-              <h2>beta v2.2</h2>
+              <h2>beta v2.4</h2>
           </div>
         </div>
         <div class="large-6 columns">
@@ -117,7 +117,13 @@
             <div class="large-12 columns" id='tweetpanel'>
               <h3 class='twitter-header'>Twitter</h3>
               <div  class='panel'>
-                <div id='tweet_feed'></div>
+                <div id='tweet_feed' style='width: 520px; margin-left: auto; margin-right: auto;'>
+
+<a class="twitter-timeline"  width="520px" href="https://twitter.com/search?q=%23bash3w"  data-chrome="noheader nofooter transparent noscrollbar" data-widget-id="373316916703539200">Tweets about "#bash3w"</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+
+		</div>
               </div>
             </div>
           </div>
