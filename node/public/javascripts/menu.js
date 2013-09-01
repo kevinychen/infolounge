@@ -32,6 +32,6 @@ function getMenu() {
 
 function menuHandler(response) {
     query = response.queries.request[0].searchTerms;
-    menuCache[query] = "<img src=" + response.items[0].link + " alt='' width=150>";
+    menuCache[query] = "<img src=" + response.items[0].link + " alt='' width=150 style='padding:3px;'>";
     document.getElementById("menu").innerHTML += menuCache[query];
 }

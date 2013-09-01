@@ -22,7 +22,7 @@ function getMenu(req, res) {
             res.json({});
             return;
         }
-        var endIndex = body.indexOf('No items exist on this day.', dateIndex); // always at end
+        var endIndex = body.indexOf('The Story Behind Your Food', dateIndex); // always at end
         var today = body.substring(dateIndex, endIndex);
 
         var breakfastIndex = today.indexOf('Breakfast');
@@ -31,21 +31,21 @@ function getMenu(req, res) {
 
         var time = dateformat.dateFormat(now, 'HH:mm');
         if (time > '08:00' && time < '10:15' && breakfastIndex != -1) {
-            var foodIndex = today.indexOf('<strong>breakfast</strong>', breakfastIndex);
-            var breakfast = today.substring(foodIndex + 1).match(/<strong>[^<>]+/g)[0].substring(8);
+            var foodIndex = today.indexOf('<td colspan="3">breakfast</td>', breakfastIndex);
+            var breakfast = today.substring(foodIndex + 1).match(/<div class="eni-menu-item-name">[^<>]+/g)[0].substring(34);
             res.json({'Breakfast': breakfast});
         } else if (time > '09:45' && time < '13:15' && brunchIndex != -1) {
-            var comfortsIndex = today.indexOf('<strong>comforts</strong>', brunchIndex);
-            var comforts = today.substring(comfortsIndex + 1).match(/<strong>[^<>]+/g)[0].substring(8);
+            var comfortsIndex = today.indexOf('<td colspan="3">comforts</td>', brunchIndex);
+            var comforts = today.substring(comfortsIndex + 1).match(/<div class="eni-menu-item-name">[^<>]+/g)[0].substring(34);
             res.json({'Brunch': comforts});
         } else if (time > '15:15' && time < '20:45' && dinnerIndex != -1) {
-            var comfortsIndex = today.indexOf('<strong>comforts</strong>', dinnerIndex);
-            var grillIndex = today.indexOf('<strong>smokehouse grill</strong>', dinnerIndex);
-            var stirfryIndex = today.indexOf('<strong>action</strong>', dinnerIndex);
+            var comfortsIndex = today.indexOf('<td colspan="3">comforts</td>', dinnerIndex);
+            var grillIndex = today.indexOf('<td colspan="3">smokehouse grill</td>', dinnerIndex);
+            var stirfryIndex = today.indexOf('<td colspan="3">action</td>', dinnerIndex);
 
-            var comforts = today.substring(comfortsIndex + 1).match(/<strong>[^<>]+/g)[0].substring(8);
-            var grill = today.substring(grillIndex + 1).match(/<strong>[^<>]+/g)[0].substring(8);
-            var stirfry = today.substring(stirfryIndex + 1).match(/<strong>[^<>]+/g)[0].substring(8);
+            var comforts = today.substring(comfortsIndex + 1).match(/<div class="eni-menu-item-name">[^<>]+/g)[0].substring(34);
+            var grill = today.substring(grillIndex + 1).match(/<div class="eni-menu-item-name">[^<>]+/g)[0].substring(34);
+            var stirfry = today.substring(stirfryIndex + 1).match(/<div class="eni-menu-item-name">[^<>]+/g)[0].substring(34);
 
             res.json({'Comfort': comforts, 'Grill': grill, 'Stir Fry': stirfry});
         } else {

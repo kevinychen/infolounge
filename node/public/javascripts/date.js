@@ -33,7 +33,10 @@ function getDate() {
 	dict.push([fracpart, '<div class="subdate">' + people[i][0] + ' is ' + ageStr + ' years old</div>']);
     }
     dict.sort();
-    var elem = dateFormat(now, 'ddd, mmmm d');
+    if (now.getMonth() == 8)
+        var elem = dateFormat(now, 'ddd, mmm d');
+    else
+        var elem = dateFormat(now, 'ddd, mmmm d');
     for (var i = dict.length; --i >= dict.length - 3; ) {
 	elem += dict[i][1];
     }
