@@ -28,8 +28,21 @@
   	
 <script type='text/javascript'>
     lastUpdated = -1;
+	var isItLateYet = function() {
+		var today = new Date().getHours();
+		if (today >= 2 && today <= 7) {	
+			$('.shutthefuckup').show();
+			console.log(today);
+		} else {
+			$('.shutthefuckup').hide();
+			console.log(today);
+		}
+		setTimeout(isItLateYet, 1000);
+	}
+	$('.shutthefuckup').hide();
+	
     $(document).ready(function(){
-
+		isItLateYet();
         $('#tweet_feed').jTweetsAnywhere({
             searchParams: ['q=bash3w'],
             count: 10,
@@ -189,6 +202,12 @@
           </div>
         -->
       </div>
+    </div>
+    <div class='shutthefuckup'>
+    	<div class='block'>
+    		<h2>It's Past 2am! That means…</h2>
+    		<h1>Quiet Hours!</h1>
+    	</div>
     </div>
   </body>
 </html>

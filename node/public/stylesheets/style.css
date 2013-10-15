@@ -246,3 +246,35 @@ ul.jta-tweet-list li a{
 #news{
     font-size: 28px;
 }
+
+.shutthefuckup {
+	background-color: red;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+.shutthefuckup .block {
+	height: 200px;
+	margin: -100px 0 0 -300px;
+	text-align: center;
+	width: 600px;
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	
+}
+.shutthefuckup h1 {
+	text-align: center;
+	color: #fff;
+	margin: 0 0 10px 0;
+	font-size: 100px
+}
+.shutthefuckup h2 {
+	margin: 0 0 10px 0;
+	opacity: 1;
+	font-size: 80px
+	text-align: center;
+	color: #fff;
+}
