@@ -29,6 +29,7 @@
 <script type='text/javascript'>
     lastUpdated = -1;
 	var isItLateYet = function() {
+			
 		var today = new Date().getHours();
 		if (today >= 2 && today <= 7) {	
 			$('.shutthefuckup').show();
@@ -37,12 +38,89 @@
 			$('.shutthefuckup').hide();
 			console.log(today);
 		}
+
+		var hour0 = new Date().getHours();
+		var year0 = new Date().getFullYear();
+		var month0 = new Date().getMonth();		
+		var date0 = new Date().getDate();
+
+		console.log("HOUR");
+		console.log(hour0);
+		console.log("YEAR");
+		console.log(year0);
+		console.log("MONTH");
+		console.log(month0);
+		console.log("DATE");
+		console.log(date0);
+
+		if(year0 == 2014 && month0 == 0 && date0 == 21){
+			if (hour0 >= 13) {	
+				$('.warning').show();
+				//$('.clockB').show();
+				//$('.clock').hide();
+				console.log(hour0);
+			} else {
+				$('.warning').hide();
+				//$('.clockB').hide();
+				//$('.clock').show();
+				console.log(hour0);
+			}
+		}
+		else if(year0 == 2014 && month0 == 0 && date0 == 22){
+			if (hour0 >= 0 && hour0 <= 13) {	
+				$('.warning').show();
+				//$('.clockB').show();
+				//$('.clock').hide();
+				console.log(hour0);
+			} else {
+				$('.warning').hide();
+				//$('.clockB').hide();
+				//$('.clock').show();
+				console.log(hour0);
+			}
+		}
+		else{
+			$('.warning').hide();	
+			//$('.clockB').hide();
+		}
+
 		setTimeout(isItLateYet, 1000);
 	}
 	$('.shutthefuckup').hide();
+	$('.warning').hide();
+	//$('.clockB').hide();
 	
+/*	var isWarnTime = function() { 
+		var hour0 = new Date().getHours();
+		var year0 = new Date().getFullYear();
+		var month0 = new Date().getMonth();		
+		var date0 = new Date().getDate();
+		if(year0 = 2013 && month0 = 12 && date0 = 14){
+			if (hour0 >= 13 && hour0 <= 24) {	
+				$('.warning').show();
+				console.log(hour0);
+			} else {
+				$('.warning').hide();
+				console.log(hour0);
+			}
+		}
+		if(year0 = 2013 && month0 = 12 && date0 = 15){
+			if (hour0 >= 0 && hour0 <= 13) {	
+				$('.warning').show();
+				console.log(hour0);
+			} else {
+				$('.warning').hide();
+				console.log(hour0);
+			}
+		}
+		setTimeout(isWarnTime, 1000);
+	}
+	$('.warning').hide();
+*/
+
     $(document).ready(function(){
 		isItLateYet();
+
         $('#tweet_feed').jTweetsAnywhere({
             searchParams: ['q=bash3w'],
             count: 10,
@@ -73,6 +151,7 @@
       window.setInterval(function() {
           now = new Date();
           document.getElementById('clock').innerHTML=dateFormat(now, 'H:MM');
+	  //document.getElementById('clockB').innerHTML=dateFormat(now, 'H:MM');
           getDate();
 
           if (now.getMinutes() != lastUpdated) {
@@ -93,18 +172,38 @@
 
   </head>
   <body>
+
+      <div class='shutthefuckup'>
+    	  <div class='block'>
+    	  	<h1>No loud noises!</h1>
+    	  </div>
+      </div>
+<!-- -->
+      <div class='warning'>
+    	  <div class='block'>
+    	  	<h1>Winter Storm Warning until 1pm Wed</h1>
+    	  </div>
+      </div>
+<!-- -->
   	<div id='content'>
       <div class="row">
         <div class="large-6 columns">
           <div id='header'>
               <h1>infolounge</h1>
-              <h2>beta v2.4</h2>
+              <h2>beta v2.5</h2>
           </div>
         </div>
+
         <div class="large-6 columns">
             <div id='clock'></div>
         </div>
+<!--
+	<div class="large-6 columns">
+            <div id='clockB'></div>
+        </div>
+-->
       </div>
+
       <div class="row">
         <div class="large-7 columns">
 
@@ -166,7 +265,7 @@
 
           <div class="row">
             <div class="large-12 columns" id='techpanel'>
-              <h3 class='techshuttle-header'>Tech Shuttle</h3>
+              <h3 class='techshuttle-header'>Public Transport</h3>
               <div class='panel'>
                 <ul id="predictions"></ul>
               </div>
@@ -202,12 +301,6 @@
           </div>
         -->
       </div>
-    </div>
-    <div class='shutthefuckup'>
-    	<div class='block'>
-    		<h2>It's Past 2am! That means…</h2>
-    		<h1>Quiet Hours!</h1>
-    	</div>
     </div>
   </body>
 </html>
