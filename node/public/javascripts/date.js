@@ -60,6 +60,11 @@ function getDate() {
         var ageIncStr = (age - 0.000001).toFixed(8);
 	var fracpart = ageIncStr.substring(ageIncStr.indexOf('.'));
 	dict.push([fracpart, '<div class="subdate">' + people[i][0] + ' is ' + ageStr + ' years old</div>']);
+
+    if (people[i][0] == 'normandy' && age > 21){
+      $("#birthdaybanner").show()
+    }
+
     }
     dict.sort();
     if (now.getMonth() == 8)
