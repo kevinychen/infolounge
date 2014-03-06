@@ -97,9 +97,9 @@ function getPredictions() {
     $.getJSON(predictionsCT2S, handlePredictions);
 };
 
-
 if (elem.length == 0) {
     $("#techpanel").slideUp("slow");
+}
 
 if (elem.length == 0) {
     $("#techpanel").slideUp("slow");
