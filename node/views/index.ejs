@@ -15,6 +15,7 @@
     <script src="http://tweet.seaofclouds.com/jquery.tweet.js" charset="utf-8"></script>
     <script type="text/javascript" src="/javascripts/jquery.simpleWeather.js" charset="utf-8"></script>
     <script type="text/javascript" src="/javascripts/jquery.jtweetsanywhere-1.3.1.js"></script>
+    <script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.6/firebase.js'></script>
     <script src="/javascripts/dateformat.js"></script>
     <script src="/javascripts/date.js"></script>
     <script src="/javascripts/weather.js"></script>
@@ -33,10 +34,8 @@
 		var today = new Date().getHours();
 		if (today >= 2 && today <= 7) {	
 			$('.shutthefuckup').show();
-			console.log(today);
 		} else {
 			$('.shutthefuckup').hide();
-			console.log(today);
 		}
 
 		var hour0 = new Date().getHours();
@@ -44,26 +43,15 @@
 		var month0 = new Date().getMonth();		
 		var date0 = new Date().getDate();
 
-		console.log("HOUR");
-		console.log(hour0);
-		console.log("YEAR");
-		console.log(year0);
-		console.log("MONTH");
-		console.log(month0);
-		console.log("DATE");
-		console.log(date0);
-
 		if(year0 == 2014 && month0 == 0 && date0 == 21){
 			if (hour0 >= 13) {	
 				$('.warning').show();
 				//$('.clockB').show();
 				//$('.clock').hide();
-				console.log(hour0);
 			} else {
 				$('.warning').hide();
 				//$('.clockB').hide();
 				//$('.clock').show();
-				console.log(hour0);
 			}
 		}
 		else if(year0 == 2014 && month0 == 0 && date0 == 22){
@@ -71,12 +59,10 @@
 				$('.warning').show();
 				//$('.clockB').show();
 				//$('.clock').hide();
-				console.log(hour0);
 			} else {
 				$('.warning').hide();
 				//$('.clockB').hide();
 				//$('.clock').show();
-				console.log(hour0);
 			}
 		}
 		else{
@@ -167,6 +153,25 @@
 
       $("#tweetpanel").delay(600).slideDown("slow");
 
+	var url = "https://simple-minecraft.firebaseIO.com/userStatus/";
+	var myRootRef = new Firebase(url);
+	myRootRef.on('value', function(snapshot){
+		data = snapshot.val()
+		html = ''
+		if (Object.keys(data).length == 1){
+			$('#minecraftpanel').slideUp();
+		} else {
+			$('#minecraftpanel').slideDown();
+			for (user in Object.keys(data)) {
+				if (Object.keys(data)[user] !== 'server'){
+					html += Object.keys(data)[user] + ', ';
+				}
+			}
+			html = html.slice(0,-2);
+		}
+		
+		$('.minecraft').html(html);
+    });
     });
 </script>
 
@@ -274,7 +279,7 @@
               </div>
             </div>  
           </div>
-
+<!--
           <div class="row">
             <div class="large-12 columns" id='imgpanel'>
               <h3 class='img-header'>Image</h3>
@@ -283,7 +288,16 @@
               </div>
             </div>  
           </div>
-
+-->    
+          <div class="row">
+            <div class="large-12 columns" id="minecraftpanel">
+              <h3 class='minecraft-header'>Current Crafters</h3>
+              <div class='panel minecraft'>
+              	
+              </div>
+            </div>  
+          </div>          
+<!--
           <div class="row">
             <div class="large-12 columns" id='webcampanel'>
               <h3 class='img-header'>Video</h3>
@@ -292,6 +306,8 @@
               </div>
             </div>
           </div>
+          -->
+          
         </div>
         <!--
           <div class="row">
@@ -305,5 +321,7 @@
         -->
       </div>
     </div>
+
+
   </body>
 </html>

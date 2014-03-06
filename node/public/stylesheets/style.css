@@ -129,6 +129,9 @@ b{
 	background-color: #D92525;
 }
 
+.minecraft-header{
+	background-color: #9db2b7;
+}
 
 .techshuttle-header{
 	background-color: #39DB4F;
@@ -149,9 +152,9 @@ b{
 	font-weight: 300;
 }
 #date{
-	font-size: 4em;
+	font-size: 3.5em;
 	text-align: center;
-	font-weight: 500;
+	font-weight: bold;
 }
 #date .subdate{
 	font-weight: 200;
@@ -234,25 +237,25 @@ ul.jta-tweet-list li a{
 }
 
 .tech-minutes2{
-    font-size: 90px;
+    font-size: 72px;
     font-weight: 600;
 }
 
 .tech-minutes{
-    font-size: 52px;
+    font-size: 40px;
     font-weight: 600;
 }
 
 .tech-route2{
-    font-size: 34px;
+    font-size: 30px;
 }
 
 .tech-route{
-    font-size: 26px;
+    font-size: 20px;
 }
 
 #menu{
-    font-size: 24px;
+    font-size: 18px;
     line-height: 120%;
     font-weight: 400;
     text-transform: lowercase;
@@ -345,6 +348,12 @@ ul.jta-tweet-list li a{
 	font-size: 7px;
 	text-align: center;
 }
+
+.minecraft {
+	text-align: center;
+	font-size: 30px;
+}
+
 #birthdaybanner {
   position: absolute;
   z-index: 1337;

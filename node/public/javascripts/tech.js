@@ -97,13 +97,6 @@ function getPredictions() {
     $.getJSON(predictionsCT2S, handlePredictions);
 };
 
-console.log('Elem content:');
-console.log(elem);
-console.log('Elem length:');
-console.log(''+elem.length);
-
 if (elem.length == 0) {
-	console.log('ONE');
     $("#techpanel").slideUp("slow");
-	console.log('TWO');
 }

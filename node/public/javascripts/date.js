@@ -62,7 +62,7 @@ function getDate() {
 	dict.push([fracpart, '<div class="subdate">' + people[i][0] + ' is ' + ageStr + ' years old</div>']);
 
     if (people[i][0] == 'normandy' && age > 21){
-      $("#birthdaybanner").show()
+      //$("#birthdaybanner").show()
     }
 
     }
